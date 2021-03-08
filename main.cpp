@@ -7,22 +7,14 @@
 
 using namespace std;
 
-class DijkstrasAlgorithm : public GraphAlgorithm<int, int> {
-public:
-	void start() override;
-	void currentNode(pair<size_t, Node<int>*> node) override { currentNode_v = node.first; };
-	int decideNext(vector<pair<size_t, int>> remainingNodes, vector<bool> visitedNodes) override;
-	void end() override;
-
-	DijkstrasAlgorithm(size_t start, size_t size) : startNode(start), nodeCount(size) {};
-
-private:
-	size_t startNode;
-	size_t currentNode_v;
-	size_t nodeCount;
-	vector<int> distanceFromStartNode;
-	vector<int> lastNode;
+class PrintAlgorithm : public GraphAlgorithm<int, int> {
+	virtual void start() {};
+	virtual void currentNodeAction();
+	virtual void end() {
+		cout << "end" << endl;
+	};
 };
+
 
 int main() {
 	Graph<int, int> g;
@@ -44,40 +36,15 @@ int main() {
 	g.addEdge(4, 3, 2);
 	g.addEdge(4, 5, 1);
 
+	PrintAlgorithm pa;
 
-	DijkstrasAlgorithm da(0, g.getNodeSize());
-	g.DFS(0, da);
+	g.DFS(0, pa);
 
 
 	return 0;
 }
 
-void DijkstrasAlgorithm::start()
+void PrintAlgorithm::currentNodeAction()
 {
-	for (size_t i = 0; i < nodeCount; i++)
-		distanceFromStartNode.push_back(INT_MAX);
-	distanceFromStartNode[startNode] = 0;
-	for (size_t i = 0; i < nodeCount; i++)
-		lastNode.push_back(-1);
-}
-
-int DijkstrasAlgorithm::decideNext(vector<pair<size_t, int>> remainingNodes, vector<bool> visitedNodes)
-{
-	if (!remainingNodes.size())
-		return -1;
-	for (auto&& i : remainingNodes)
-		if (distanceFromStartNode[currentNode_v] + i.second < distanceFromStartNode[i.first]) {
-			distanceFromStartNode[i.first] = distanceFromStartNode[currentNode_v] + i.second;
-			lastNode[i.first] = currentNode_v;
-		}
-	for (int i = 0; i < visitedNodes.size(); i++) {
-		if (!visitedNodes[i])
-			return i;
-	}
-	return -1;
-}
-
-void DijkstrasAlgorithm::end()
-{
-	cout << "End!" << endl;
+	cout << "Current Node: " << currentNode.first << " value: " << currentNode.second->getValue() << endl;
 }

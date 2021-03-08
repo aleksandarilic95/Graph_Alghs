@@ -65,27 +65,23 @@ inline int Graph<T, P>::getNode(T node) const noexcept
 template<typename T, typename P>
 inline void Graph<T, P>::DFS(size_t start, GraphAlgorithm<T, P>& algorithm)
 {
-	algorithm.start();
-	vector<bool> visitedNodes(getNodeSize(), false);
+	algorithm.startAdmin(getNodeSize(), adjMatrix_);
 	stack<size_t> nodeStack({start});
 	while (!nodeStack.empty()) {
+		//Pop starting node from the stack
 		size_t currentNode = nodeStack.top();
 		nodeStack.pop();
 
-
-
-		if (!visitedNodes[currentNode]) {
-			//TODO
-			algorithm.currentNode(make_pair(currentNode,(nodes_[currentNode]).first));
-			visitedNodes[currentNode] = true;
+		//If node is not visited, visit the node
+		if (!algorithm.isVisited(currentNode)) {
+			algorithm.currentNodeAdmin(make_pair(currentNode, (nodes_[currentNode]).first));
 		}
-
 		
-		
-		size_t nextNode = algorithm.decideNext(adjMatrix_[currentNode], visitedNodes);
-		if (nextNode != -1)
-			nodeStack.push(nextNode);
-		
+		vector<int> nextNodes = algorithm.decideNextBase();
+		reverse(nextNodes.begin(), nextNodes.end());
+		if(nextNodes[0] != -1)
+			for (auto i : nextNodes)
+				nodeStack.push(i);
 	}
 	algorithm.end();
 }
