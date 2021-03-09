@@ -13,32 +13,32 @@ Graph<int, int> g; //Graph with weighted integer edges where each node contains 
 Graph interface:
 
 ```cpp
-size_t size() //Returns graph size (number of nodes)
-int getNode(T node) //Returns number of a node in a graph given the vertice T
-void addNode(T node) //Adds a node to the graph given the vertice T
-void addEdge(size_t first, size_t second, P connection) //Adds an edge to the graph given the numbers of node it connects and it's connection P
+size_t size(); //Returns graph size (number of nodes)
+int getNode(T node); //Returns number of a node in a graph given the vertice T
+void addNode(T node); //Adds a node to the graph given the vertice T
+void addEdge(size_t first, size_t second, P connection); //Adds an edge to the graph given the numbers of node it connects and it's connection P
 ```
 
 Graph traversal:
 
 ```cpp
-void DFS(size_t start, DFSAlgorithmBase<T,P>& algorithm) //Depth first search traversal of the graph that takes start node and algorithm as parameters
+void DFS(size_t start, DFSAlgorithmBase<T,P>& algorithm); //Depth first search traversal of the graph that takes start node and algorithm as parameters
 ```
 
 For creating algorithms, they need to be inherited from DFSAlgorithmBase class and certain methods need to be implemented:
 
 ```cpp
 /*4 methods that need to be implemented*/
-void start() //Do any necessary work before the algorithm starts 
-void currentNodeAction() //What you want to be done whenever algorithm visits a node
-pair<int, P> decideNext() //Decide which node out of the available ones you want to be visited next
-void end() //Do any necessary work before algorithm ends
+void start(); //Do any necessary work before the algorithm starts 
+void currentNodeAction(); //What you want to be done whenever algorithm visits a node
+pair<int, P> decideNext(); //Decide which node out of the available ones you want to be visited next
+void end(); //Do any necessary work before algorithm ends
 ```
 
 DFSAlgorithmBase interface:
 
 ```cpp
-bool isVisited(size_t idx) { return visitedNodes[idx]; } //given the index, check if node was already visited
+bool isVisited(size_t idx); { return visitedNodes[idx]; } //given the index, check if node was already visited
   
 /*Whenever you enter currentNodeAction() or decideNext() you'll be presented with:*/
 size_t node_size; //Size of the node
