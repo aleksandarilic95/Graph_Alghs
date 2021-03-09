@@ -38,11 +38,11 @@ void end() //Do any necessary work before algorithm ends
 DFSAlgorithmBase interface:
 
 ```cpp
-	bool isVisited(size_t idx) { return visitedNodes[idx]; } //given the index, check if node was already visited
+bool isVisited(size_t idx) { return visitedNodes[idx]; } //given the index, check if node was already visited
   
-  /*Whenever you enter currentNodeAction() or decideNext() you'll be presented with:*/
-  size_t node_size; //Size of the node
-  pair<size_t, Node<T>*> currentNode; //Node you are currently on, first parameter in a pair is a number of a node in the graph, second parameter is a pointer to a Node<T> structure
+/*Whenever you enter currentNodeAction() or decideNext() you'll be presented with:*/
+size_t node_size; //Size of the node
+pair<size_t, Node<T>*> currentNode; //Node you are currently on, first parameter in a pair is a number of a node in the graph, second parameter is a pointer to a Node<T> structure
 P lastEdge; //The edge used to arrive to the current node
 vector<pair<size_t, P>> currentNeighbors; //Neighbors of the current node
 ```
