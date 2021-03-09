@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Node.h"
-#include "GraphAlgorithm.h"
+#include "DFSAlgorithmBase.h"
 
 #include <vector>
 #include <stack>
@@ -29,9 +29,9 @@ public:
 
 	int getNode(T node) const noexcept;
 
-	void DFS(size_t start, GraphAlgorithm<T,P>& algorithm);
+	void DFS(size_t start, DFSAlgorithmBase<T,P>& algorithm);
 
-	size_t getNodeSize() const noexcept { return nodes_.size(); }
+	size_t size() const noexcept { return nodes_.size(); }
 private:
 	vector<pair<Node<T>*, size_t>> nodes_; //Each pair holds value of the Node and it's number in the graph
 	vector<vector<pair<size_t,P>>> adjMatrix_; //Adjacency matrix of pairs holding number of the node that it connects to and connection P
@@ -40,16 +40,14 @@ private:
 template<typename T, typename P>
 inline void Graph<T, P>::addNode(T node) noexcept
 {
-	nodes_.push_back(make_pair(new Node<T>(node), getNodeSize()));
+	nodes_.push_back(make_pair(new Node<T>(node), size()));
 	adjMatrix_.push_back({});
 }
 
 template<typename T, typename P>
 inline void Graph<T, P>::addEdge(size_t first, size_t second, P connection)
 {
-	if (first > getNodeSize() - 1 or second > getNodeSize() - 1)
-		//TODO: throw exception
-		;
+	
 	adjMatrix_[first].push_back(make_pair(second, connection));
 }
 
@@ -63,9 +61,9 @@ inline int Graph<T, P>::getNode(T node) const noexcept
 }
 
 template<typename T, typename P>
-inline void Graph<T, P>::DFS(size_t start, GraphAlgorithm<T, P>& algorithm)
+inline void Graph<T, P>::DFS(size_t start, DFSAlgorithmBase<T, P>& algorithm)
 {
-	algorithm.startAdmin(getNodeSize(), adjMatrix_);
+	algorithm.startAdmin(size(), start, adjMatrix_);
 	stack<size_t> nodeStack({start});
 	while (!nodeStack.empty()) {
 		//Pop starting node from the stack
@@ -83,5 +81,5 @@ inline void Graph<T, P>::DFS(size_t start, GraphAlgorithm<T, P>& algorithm)
 			for (auto i : nextNodes)
 				nodeStack.push(i);
 	}
-	algorithm.end();
+	algorithm.endAdmin();
 }
