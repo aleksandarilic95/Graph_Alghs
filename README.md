@@ -66,8 +66,24 @@ public:
 	void decide_next(vector<pair<size_t, int>>&);
 	void end();
 private:
-	vector<int> distanceFromStart;
-	vector<int> lastNode;
+	vector<int> distance_from_start;
 	vector<std::string> nodes;
 };
 ```
+
+Implementing user-defined algorithm requires overriding 4 functions, we'll go over them in chronological order:
+
+`void start()`:
+
+Do any necessary prep work before algorithm starts, such as initializing variables your going to need.
+
+```cpp
+void DijsktrasAlgorithm::start()
+{
+	for (size_t i = 0; i < graph_size(); i++)
+		distance_from_start.push_back(INT_MAX);
+	distance_from_start[start_node()] = 0;	
+	nodes.reserve(graph_size());
+}
+```
+
