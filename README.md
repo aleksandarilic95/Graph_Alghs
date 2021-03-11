@@ -82,7 +82,7 @@ void DijsktrasAlgorithm::start()
 {
 	distance_from_start.assign(graph_size(), INT_MAX);
 	distance_from_start[start_node()] = 0;
-	nodes.reserve(graph_size());
+	nodes.assign(graph_size(), "");
 }
 ```
 
