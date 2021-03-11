@@ -80,10 +80,47 @@ Do any necessary prep work before algorithm starts, such as initializing variabl
 ```cpp
 void DijsktrasAlgorithm::start()
 {
-	for (size_t i = 0; i < graph_size(); i++)
-		distance_from_start.push_back(INT_MAX);
-	distance_from_start[start_node()] = 0;	
+	distance_from_start.assign(graph_size(), INT_MAX);
+	distance_from_start[start_node()] = 0;
 	nodes.reserve(graph_size());
 }
 ```
 
+`void current_node_do()`:
+
+When you land on a node during traversal, do necessary stuff so your algorithm works.
+
+```cpp
+void DijsktrasAlgorithm::current_node_do()
+{
+	for (auto&& i : current_neighbors)
+		if (distance_from_start[i.first] > distance_from_start[current_node.first] + i.second)
+			distance_from_start[i.first] = distance_from_start[current_node.first] + i.second;
+}
+```
+
+`void decide_next(vector<pair<size_t, int>>& vec)`:
+
+Given a vector of possible next nodes, decide which nodes you want visited. Algorithm will visit first node in the vector next. If you want no nodes visited, empty the vector and return from the function. Vector is made out of pairs, first element in pair represents next node, second pair represents the weight of the edge.
+
+```cpp
+void DijsktrasAlgorithm::decide_next(vector<pair<size_t, int>>& vec)
+{
+	return;
+}
+```
+*We don't want to influence anything here, so we just return*
+
+`void end()`:
+
+After the algorithm finishes, do all the necessary work.
+
+```cpp
+void DijsktrasAlgorithm::end()
+{
+	for (size_t i = 0; i < graph_size(); i++)
+		cout << nodes.at(i) << ": " << distance_from_start.at(i) << endl;
+
+	cout << "Algorithm time: " << algorithm_time_us() << " us" << endl;
+}
+```
