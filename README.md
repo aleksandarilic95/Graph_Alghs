@@ -1,5 +1,5 @@
 # **The API**
-## **Creating the graph**
+## *Creating the graph*
 
 Graph can be created with no parameters:
 
