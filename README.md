@@ -150,3 +150,26 @@ E: 2
 F: 3
 Algorithm time: 230 us
 ```
+
+## *API For Algorithms*
+`size_t start_node()` - *Returns index of a starting node*
+
+`size_t graph_size()` - *Returns size of the graph*
+
+`pair<size_t, Node<T>> current_node;` - *Current node in traversal. First item is index of the node, second item is the node itself.*
+
+`P last_edge;` - *Last edge used to arrive to the current node.*
+
+`vector<pair<size_t, P>> current_neighbors;` - *All of the neighbors of the current node. First item is index of the neighbor, second item is the weight of the edge.*
+
+## *Algorithm time*
+During the `void end()` function, users can call:
+`long long algorithm_time_s()` - *Returns time of the algorithm in seconds*
+
+`long long algorithm_time_ms()` - *Returns time of the algorithm in milliseconds*
+
+`long long algorithm_time_us()` - *Returns time of the algorithm in microseconds*
+
+`long long algorithm_time_ns()` - *Returns time of the algorithm in nanoseconds*
+
+Calling these functions before `void end()` will return 0.
