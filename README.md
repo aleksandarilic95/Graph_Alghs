@@ -93,6 +93,7 @@ When you land on a node during traversal, do necessary stuff so your algorithm w
 ```cpp
 void DijsktrasAlgorithm::current_node_do()
 {
+	nodes[current_node.first] = current_node.second.getValue();
 	for (auto&& i : current_neighbors)
 		if (distance_from_start[i.first] > distance_from_start[current_node.first] + i.second)
 			distance_from_start[i.first] = distance_from_start[current_node.first] + i.second;
