@@ -34,3 +34,9 @@ Edges can be added to the graph using `Graph<T, P>& add_edge(size_t first, size_
 *first - first node of the connection*, 
 *second - second node of the connection*, 
 *P - weight of the connection*.
+
+Additionally, `add_node()` and `add_edge()` can be appended to one another:
+
+```cpp
+  g.add_node({"A","B","C"}).add_edge(0,1,1).add_edge(1,2,5); //Adds 3 nodes to the graph and connects "A"->"B" and "B"->"C".
+```
