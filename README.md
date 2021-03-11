@@ -1,4 +1,4 @@
-# **The API**
+# The API
 ## *Creating the graph*
 
 Graph can be created with no parameters:
@@ -50,4 +50,24 @@ Graph can be traversed using `void DFS(size_t start, DFSAlgorithmBase<T,P>& algo
 ```cpp
   DijkstrasAlgorithm da; //Instance of a class DijsktrasAlgorithm that inherits from DFSAlgorithmBase.
   g.DFS(0, da); //Starts traversal from node 0 using DijkstrasAlgorithm.
+```
+
+
+# Creating Algorithms
+## **DFSBaseAlgorithm**
+
+Creating algorithms for Depth First Search traversal can be done by inheriting from DFSBaseAlgorithm class. To show an example, we're going to implement Dijkstra's Algorithm:
+
+```cpp
+class DijsktrasAlgorithm : public DFSAlgorithmBase<std::string, int> {
+public:
+	void start();
+	void current_node_do();
+	void decide_next(vector<pair<size_t, int>>&);
+	void end();
+private:
+	vector<int> distanceFromStart;
+	vector<int> lastNode;
+	vector<std::string> nodes;
+};
 ```
