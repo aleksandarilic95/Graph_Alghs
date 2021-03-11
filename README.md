@@ -164,6 +164,7 @@ Algorithm time: 230 us
 
 ## *Algorithm time*
 During the `void end()` function, users can call:
+
 `long long algorithm_time_s()` - *Returns time of the algorithm in seconds*
 
 `long long algorithm_time_ms()` - *Returns time of the algorithm in milliseconds*
