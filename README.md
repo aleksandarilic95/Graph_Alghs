@@ -31,6 +31,6 @@ Edges can be added to the graph using `Graph<T, P>& add_edge(size_t first, size_
 ```cpp
   g.add_edge(0,1,1);
 ```
-*first - first node of the connection*
-*second - second node of the connection*
-*P - weight of the connection*
+*first - first node of the connection*, 
+*second - second node of the connection*, 
+*P - weight of the connection*.
