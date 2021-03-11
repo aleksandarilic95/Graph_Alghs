@@ -40,3 +40,14 @@ Additionally, `add_node()` and `add_edge()` can be appended to one another:
 ```cpp
   g.add_node({"A","B","C"}).add_edge(0,1,1).add_edge(1,2,5); //Adds 3 nodes to the graph and connects "A"->"B" and "B"->"C".
 ```
+
+
+
+## *Graph traversal*
+
+Graph can be traversed using `void DFS(size_t start, DFSAlgorithmBase<T,P>& algorithm);` where *algorithm* is an object of a user class that inherits from the `DFSAlgorithmBase` class. More on inhereting algorithms later. Currently only Depth First Search traversal is implemented:
+
+```cpp
+  DijkstrasAlgorithm da; //Instance of a class DijsktrasAlgorithm that inherits from DFSAlgorithmBase.
+  g.DFS(0, da); //Starts traversal from node 0 using DijkstrasAlgorithm.
+```
