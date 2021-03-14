@@ -1,13 +1,12 @@
 #pragma once
 
 #include "Node.h"
+
 #include <vector>
 #include <chrono>
 #include <stack>
 
 using namespace std;
-
-
 
 template <typename T, typename P>
 class GBaseAlgorithm
@@ -83,11 +82,11 @@ public:
 template<typename T, typename P>
 inline void GBaseAlgorithm<T, P>::util_start(size_t p_node_size, size_t p_start_node, vector<vector<pair<size_t, P>>> p_adj_matrix)
 {
-	m_start_time = chrono::high_resolution_clock::now();
-	m_graph_size = p_node_size;
-	m_start_node = p_start_node;
-	m_visited_nodes.assign(m_graph_size, false);
-	m_adj_matrix = p_adj_matrix;
+	m_start_time_ = chrono::high_resolution_clock::now();
+	m_graph_size_ = p_node_size;
+	m_start_node_ = p_start_node;
+	m_visited_nodes_.assign(m_graph_size_, false);
+	m_adj_matrix_ = p_adj_matrix;
 
 	start();
 }
@@ -95,39 +94,36 @@ inline void GBaseAlgorithm<T, P>::util_start(size_t p_node_size, size_t p_start_
 template<typename T, typename P>
 inline void GBaseAlgorithm<T, P>::util_end()
 {
-	m_end_time = chrono::high_resolution_clock::now();
-	m_allow_time_check = true;
+	m_end_time_ = chrono::high_resolution_clock::now();
+	m_allow_time_check_ = true;
 
 	end();
 
-	m_allow_time_check = false;
+	m_allow_time_check_ = false;
 }
 
 template<typename T, typename P>
 inline vector<pair<size_t, P>> GBaseAlgorithm<T, P>::util_decide_next()
 {
 	//Puts every non-visited neighbor into the vector
-	vector<pair<size_t, P>> result = m_adj_matrix[current_node.first];
-	for (auto it = result.begin(); it != result.end();)
-		if (is_visited(it->first))
-			it = result.erase(it);
-		else
-			it++;
+	vector<pair<size_t, P>> result_;
+	for(auto it = m_adj_matrix_[current_node.first].begin(); it != m_adj_matrix_[current_node.first].end();it++)
+		if (!is_visited(it->first))
+			result_.push_back(*it);
 
-	decide_next(result);
+	decide_next(result_);
 
-	if (!result.empty())
-		last_edge = result.front().second;
-	return move(result);
-
+	if (!result_.empty())
+		last_edge = result_.front().second;
+	return move(result_);
 }
 
 template<typename T, typename P>
 inline void GBaseAlgorithm<T, P>::until_current_node_do(pair<size_t, Node<T>> p_current_node)
 {
 	current_node = p_current_node;
-	m_visited_nodes[current_node.first] = true;
-	current_neighbors = m_adj_matrix.at(current_node.first);
+	m_visited_nodes_[current_node.first] = true;
+	current_neighbors = m_adj_matrix_.at(current_node.first);
 
 	current_node_do();
 }

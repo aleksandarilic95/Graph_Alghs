@@ -20,7 +20,7 @@ private:
 int main() {
 	Graph<string, int> g({ "A", "B", "C", "D", "E", "F" });
 
-	g.add_edge(0, 1, 1).add_edge(0, 2, 7).add_edge(0, 3, 6).add_edge(1, 3, 4).add_edge(1, 4, 1).add_edge(2, 5, 2).add_edge(3, 2, 3).add_edge(5, 3, 2).add_edge(4, 3, 2).add_edge(4, 5, 1);
+	g.add_edge(0, 1, 1).add_edge(0, 2, 7).add_edge(0, 3, 6).add_edge(1, 3, 4).add_edge(1, 4, 1).add_edge(2, 5, 2).add_edge(3, 2, 3).add_edge(3, 5, 2).add_edge(4, 3, 2).add_edge(4, 5, 1);
 
 	DijsktrasAlgorithm da;
 
