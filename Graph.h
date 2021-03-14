@@ -1,10 +1,11 @@
 #pragma once
 
 #include "Node.h"
-#include "DFSAlgorithmBase.h"
+#include "GBaseAlgorithm.h"
 
 #include <vector>
 #include <stack>
+#include <queue>
 #include <iostream>
 
 using namespace std;
@@ -14,6 +15,7 @@ class Graph
 {
 public:
 	Graph() {}
+	explicit Graph(initializer_list<T> nodes);
 	/*TODO: Implement rule of 5*/
 	Graph(const Graph& g) = delete;
 	Graph& operator= (const Graph& rhs) = delete;
@@ -24,12 +26,18 @@ public:
 	~Graph() {}
 	/*****************************/
 
-	void addNode(T node) noexcept;
-	void addEdge(size_t first, size_t second, P connection);
+	Graph<T, P>& add_node(T node) noexcept;
+	Graph<T, P>& add_node(initializer_list<T> nodes) noexcept;
 
-	int getNode(T node) const noexcept;
+	Graph<T, P>& add_edge(size_t first, size_t second, P connection);
 
-	void DFS(size_t start, DFSAlgorithmBase<T,P>& algorithm);
+	int get_node(T node) const noexcept;
+	T get_node(size_t node_idx) const;
+
+
+	void DFS(size_t start, GBaseAlgorithm<T, P>& algorithm);
+
+	void BFS(size_t start, GBaseAlgorithm<T, P>& algorithm);
 
 	size_t size() const noexcept { return nodes_.size(); }
 private:
@@ -38,21 +46,40 @@ private:
 };
 
 template<typename T, typename P>
-inline void Graph<T, P>::addNode(T node) noexcept
+inline Graph<T, P>::Graph(initializer_list<T> nodes)
 {
-	nodes_.push_back(make_pair(new Node<T>(node), size()));
-	adjMatrix_.push_back({});
+	for (const T& node : nodes) {
+		nodes_.push_back(make_pair(new Node<T>(node), size()));
+		adjMatrix_.push_back({});
+	}
 }
 
 template<typename T, typename P>
-inline void Graph<T, P>::addEdge(size_t first, size_t second, P connection)
+inline Graph<T, P>& Graph<T, P>::add_node(T node) noexcept
 {
 	
-	adjMatrix_[first].push_back(make_pair(second, connection));
+	return *this;
 }
 
 template<typename T, typename P>
-inline int Graph<T, P>::getNode(T node) const noexcept
+inline Graph<T, P>& Graph<T, P>::add_node(initializer_list<T> nodes) noexcept
+{
+	for (const T& node : nodes) {
+		nodes_.push_back(make_pair(new Node<T>(node), size()));
+		adjMatrix_.push_back({});
+	}
+	return *this;
+}
+
+template<typename T, typename P>
+inline Graph<T,P>& Graph<T, P>::add_edge(size_t first, size_t second, P connection)
+{
+	adjMatrix_[first].push_back(make_pair(second, connection));
+	return *this;
+}
+
+template<typename T, typename P>
+inline int Graph<T, P>::get_node(T node) const noexcept
 {
 	for (auto nodeIter : nodes_)
 		if (*nodeIter.first == node)
@@ -61,25 +88,51 @@ inline int Graph<T, P>::getNode(T node) const noexcept
 }
 
 template<typename T, typename P>
-inline void Graph<T, P>::DFS(size_t start, DFSAlgorithmBase<T, P>& algorithm)
+inline void Graph<T, P>::DFS(size_t start, GBaseAlgorithm<T, P>& algorithm)
 {
-	algorithm.startAdmin(size(), start, adjMatrix_);
-	stack<size_t> nodeStack({start});
-	while (!nodeStack.empty()) {
+	if (!size())
+		; //TODO: Throw: Can't call DFS on empty graph
+	algorithm.util_start(size(), start, adjMatrix_);
+	stack<size_t> node_stack({start});
+	while (!node_stack.empty()) {
 		//Pop starting node from the stack
-		size_t currentNode = nodeStack.top();
-		nodeStack.pop();
+		size_t current_node = node_stack.top();
+		node_stack.pop();
 
 		//If node is not visited, visit the node
-		if (!algorithm.isVisited(currentNode)) {
-			algorithm.currentNodeAdmin(make_pair(currentNode, (nodes_[currentNode]).first));
+		if (!algorithm.is_visited(current_node)) {
+			algorithm.until_current_node_do(make_pair(current_node, *(nodes_[current_node]).first));
 		}
 		
-		vector<int> nextNodes = algorithm.decideNextBase();
-		reverse(nextNodes.begin(), nextNodes.end());
-		if(nextNodes[0] != -1)
-			for (auto i : nextNodes)
-				nodeStack.push(i);
+		vector<pair<size_t, P>> next_nodes = algorithm.util_decide_next();
+		if(next_nodes.size())
+			for (auto i : next_nodes)
+				node_stack.push(i.first);
 	}
-	algorithm.endAdmin();
+	algorithm.util_end();
+}
+
+template<typename T, typename P>
+inline void Graph<T, P>::BFS(size_t start, GBaseAlgorithm<T, P>& algorithm)
+{
+	if (!size())
+		; //TODO
+	algorithm.util_start(size(), start, adjMatrix_);
+	queue<size_t> node_queue({ start });
+	while (!node_queue.empty()) {
+		//Pop starting node from the queue
+		size_t current_node = node_queue.front();
+		node_queue.pop();
+
+		//If node is not visited, visit the node
+		if (!algorithm.is_visited(current_node)) {
+			algorithm.until_current_node_do(make_pair(current_node, *(nodes_[current_node]).first));
+		}
+
+		vector<pair<size_t, P>> next_nodes = algorithm.util_decide_next();
+		if (next_nodes.size())
+			for (auto i : next_nodes)
+				node_queue.push(i.first);
+	}
+	algorithm.util_end();
 }

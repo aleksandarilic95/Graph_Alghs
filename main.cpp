@@ -1,85 +1,58 @@
 #include "Graph.h"
+#include "GraphAlgorithms.h"
 
 #include <iostream>
 
 
-using namespace std;
 
-class DijsktrasAlgorithm : public DFSAlgorithmBase<int, int> {
+class DijsktrasAlgorithm : public GBaseAlgorithm<std::string, int> {
 public:
 	void start();
-	void currentNodeAction();
-	pair<int, int> decideNext();
+	void current_node_do();
+	void decide_next(vector<pair<size_t, int>>&);
 	void end();
-
 private:
-	vector<int> distanceFromStart;
-	vector<int> lastNode;
-
+	vector<int> distance_from_start;
+	vector<std::string> nodes;
 };
 
 
 int main() {
-	Graph<int, int> g;
+	Graph<string, int> g({ "A", "B", "C", "D", "E", "F" });
 
-	g.addNode(1);
-	g.addNode(1);
-	g.addNode(1);
-	g.addNode(1);
-	g.addNode(1);
-	g.addNode(1);
-	g.addEdge(0, 1, 1);
-	g.addEdge(0, 2, 7);
-	g.addEdge(0, 3, 6);
-	g.addEdge(1, 3, 4);
-	g.addEdge(1, 4, 1);
-	g.addEdge(2, 5, 2);
-	g.addEdge(3, 2, 3);
-	g.addEdge(3, 5, 2);
-	g.addEdge(4, 3, 2);
-	g.addEdge(4, 5, 1);
+	g.add_edge(0, 1, 1).add_edge(0, 2, 7).add_edge(0, 3, 6).add_edge(1, 3, 4).add_edge(1, 4, 1).add_edge(2, 5, 2).add_edge(3, 2, 3).add_edge(5, 3, 2).add_edge(4, 3, 2).add_edge(4, 5, 1);
 
 	DijsktrasAlgorithm da;
 
-	g.DFS(0, da);
-
+	cout << galgs::is_cyclic(g) << endl;
 
 	return 0;
 }
 
 void DijsktrasAlgorithm::start()
 {
-	for (int i = 0; i < node_size; i++)
-		distanceFromStart.push_back(INT_MAX);
-	distanceFromStart[start_node] = 0;
-	for (int i = 0; i < node_size; i++)
-		lastNode.push_back(start_node);
+	distance_from_start.assign(graph_size(), INT_MAX);
+	distance_from_start[start_node()] = 0;
+	nodes.assign(graph_size(), "");
 }
 
-void DijsktrasAlgorithm::currentNodeAction()
+void DijsktrasAlgorithm::current_node_do()
 {
-	for (auto&& i : currentNeighbors)
-		if (distanceFromStart[i.first] > distanceFromStart[currentNode.first] + i.second) {
-			distanceFromStart[i.first] = distanceFromStart[currentNode.first] + i.second;
-			lastNode[i.first] = currentNode.first;
-		}
+	nodes[current_node.first] = current_node.second.getValue();
+	for (auto&& i : current_neighbors)
+		if (distance_from_start[i.first] > distance_from_start[current_node.first] + i.second)
+			distance_from_start[i.first] = distance_from_start[current_node.first] + i.second;
 }
 
-pair<int, int> DijsktrasAlgorithm::decideNext()
+void DijsktrasAlgorithm::decide_next(vector<pair<size_t, int>>& vec)
 {
-	for (auto&& i : currentNeighbors)
-		if (!isVisited(i.first))
-			return i;
-
-	return make_pair(-1, 0);
+	return;
 }
 
 void DijsktrasAlgorithm::end()
 {
-	int j = 0;
-	for (auto i : distanceFromStart)
-		cout << j++ << ": " << i << endl;
+	for (size_t i = 0; i < graph_size(); i++)
+		cout << nodes.at(i) << ": " << distance_from_start.at(i) << endl;
 
-	cout << "Algorithm time: " << (double)algorithm_time.count() / 1000000 << " ms" << endl;
-	
+	cout << "Algorithm time: " << algorithm_time_us() << " us" << endl;
 }
