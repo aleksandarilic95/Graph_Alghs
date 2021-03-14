@@ -14,7 +14,7 @@ using namespace std;
 namespace galgs {
 
 	template<typename T, typename P>
-	inline bool is_cyclic(Graph<T, P>& g)
+	constexpr bool is_cyclic(Graph<T, P>& g)
 	{
 		IsCyclicAlg<T, P> ica;
 		g.DFS(0, ica);
