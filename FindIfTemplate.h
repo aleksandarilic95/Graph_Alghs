@@ -5,59 +5,59 @@
 template <typename T, typename P>
 class FindAlg : public GBaseAlgorithm<T, P> {
 public:
-	FindAlg(T value) : m_value(value), result(-1) {};
+	FindAlg(T value) : m_value_(value), m_result_(-1) {};
 	void start() {};
 	void end() {};
 	void decide_next(vector<pair<size_t, P>>& vec) {};
 	void current_node_do() {
-		if (this->current_node.second.getValue() == m_value)
-			result = this->current_node.first;
+		if (this->current_node.second.getValue() == m_value_)
+			m_result_ = this->current_node.first;
 	};
 	constexpr int get_result() const noexcept {
-		return result;
+		return m_result_;
 	}
 private:
-	int result;
-	T m_value;
+	int m_result_;
+	T m_value_;
 
 };
 
 template <typename T, typename P, class UnaryPredicate>
 class FindIfAlg : public GBaseAlgorithm<T, P> {
 public:
-	FindIfAlg(UnaryPredicate p) : m_p(p), result(-1) {};
+	FindIfAlg(UnaryPredicate p) : m_p_(p), m_result_(-1) {};
 	void start() {};
 	void end() {};
 	void decide_next(vector<pair<size_t, P>>& vec) {};
 	void current_node_do() {
-		if (m_p(this->current_node.second.getValue()))
-			result = this->current_node.first;
+		if (m_p_(this->current_node.second.getValue()))
+			m_result_ = this->current_node.first;
 	};
 	constexpr int get_result() const noexcept {
-		return result;
+		return m_result_;
 	}
 private:
-	int result;
-	UnaryPredicate m_p;
+	int m_result_;
+	UnaryPredicate m_p_;
 
 };
 
 template <typename T, typename P, class UnaryPredicate>
 class FindIfNotAlg : public GBaseAlgorithm<T, P> {
 public:
-	FindIfNotAlg(UnaryPredicate p) : m_p(p), result(-1) {};
+	FindIfNotAlg(UnaryPredicate p) : m_p_(p), m_result_(-1) {};
 	void start() {};
 	void end() {};
 	void decide_next(vector<pair<size_t, P>>& vec) {};
 	void current_node_do() {
-		if (!m_p(this->current_node.second.getValue()))
-			result = this->current_node.first;
+		if (!m_p_(this->current_node.second.getValue()))
+			m_result_ = this->current_node.first;
 	};
 	constexpr int get_result() const noexcept {
-		return result;
+		return m_result_;
 	}
 private:
-	int result;
-	UnaryPredicate m_p;
+	int m_result_;
+	UnaryPredicate m_p_;
 
 };
