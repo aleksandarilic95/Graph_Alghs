@@ -13,12 +13,12 @@ public:
 
 	~Node() = default;
 
-	T getValue() const { return _val; }
+	T getValue() const { return m_value_; }
 
 	friend bool operator== (const Node<T>& lhs, const Node<T>& rhs) {
-		return lhs._val == rhs._val;
+		return lhs.m_value_ == rhs.m_value_;
 	}
 private:
-	T _val;
+	T m_value_;
 };
 
