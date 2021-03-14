@@ -12,57 +12,69 @@ using namespace std;
 template <typename T, typename P>
 class GBaseAlgorithm
 {
+/*Algorithm API that needs to be overridden for the algorithm to work*/
 public:
-
 	virtual void start() = 0;
 	virtual void current_node_do() = 0;
 	virtual void decide_next([[maybe_unused]] vector<pair<size_t, P>>&) {};
 	virtual void end() = 0;
+/*********************************************************************/
 
+/*Helper functions that make algorithms work*/
 	void util_start(size_t, size_t, vector<vector<pair<size_t, P>>>);
 	void util_end();
 	vector<pair<size_t, P>> util_decide_next();
 	void until_current_node_do(pair<size_t, Node<T>>);
+/********************************************/
+
+/*Algorithm API for easier creating of algorithms*/
 protected:
 	pair<size_t, Node<T>> current_node;
 	P last_edge;
 	vector<pair<size_t, P>> current_neighbors;
-private:
+/*************************************************/
 
-	size_t m_start_node = 0;
-	size_t m_graph_size = 0;
-	vector<vector<pair<size_t, P>>> m_adj_matrix;
-	stack<P> m_last_edges;
-	vector<bool> m_visited_nodes;
+/*Private members to help algorithm function*/
+private:
+	vector<vector<pair<size_t, P>>> m_adj_matrix_;
+	stack<P> m_last_edges_;
+	vector<bool> m_visited_nodes_;
+/********************************************/
+
+/*Public API for starting node, graph size and check if visited*/
+private:
+	size_t m_start_node_;
+	size_t m_graph_size_;
 public:
-	constexpr size_t start_node() const noexcept { return m_start_node; }
-	constexpr size_t graph_size() const noexcept { return m_graph_size; }
+	constexpr size_t start_node() const noexcept { return m_start_node_; }
+	constexpr size_t graph_size() const noexcept { return m_graph_size_; }
 	constexpr bool is_visited(const size_t idx) const { 
-		if (idx < 0 or idx >= m_graph_size)
+		if (idx < 0 || idx >= m_graph_size_)
 			; //TODO: throw
-		return m_visited_nodes[idx]; 
+		return m_visited_nodes_[idx];
 	}
+/***************************************************************/
 
 /*Returns algorithm time if algorithm has reached it's end, otherwise returns 0*/
 private:
-	chrono::time_point<chrono::high_resolution_clock> m_start_time;
-	chrono::time_point<chrono::high_resolution_clock> m_end_time;
-	bool m_allow_time_check = false;
+	chrono::time_point<chrono::high_resolution_clock> m_start_time_;
+	chrono::time_point<chrono::high_resolution_clock> m_end_time_;
+	bool m_allow_time_check_ = false;
 public:
 	constexpr long long algorithm_time_s() const noexcept {
-		return m_allow_time_check ? chrono::duration_cast<chrono::seconds>(m_end_time - m_start_time).count() : 0;
+		return m_allow_time_check_ ? chrono::duration_cast<chrono::seconds>(m_end_time_ - m_start_time_).count() : 0;
 	}
 
 	constexpr long long algorithm_time_ms() const noexcept {
-		return m_allow_time_check ? chrono::duration_cast<chrono::milliseconds>(m_end_time - m_start_time).count() : 0;
+		return m_allow_time_check_ ? chrono::duration_cast<chrono::milliseconds>(m_end_time_ - m_start_time_).count() : 0;
 	}
 
 	constexpr long long algorithm_time_us() const noexcept {
-		return m_allow_time_check ? chrono::duration_cast<chrono::microseconds>(m_end_time - m_start_time).count() : 0;
+		return m_allow_time_check_ ? chrono::duration_cast<chrono::microseconds>(m_end_time_ - m_start_time_).count() : 0;
 	}
 
 	constexpr long long algorithm_time_ns() const noexcept {
-		return m_allow_time_check ? chrono::duration_cast<chrono::nanoseconds>(m_end_time - m_start_time).count() : 0;
+		return m_allow_time_check_ ? chrono::duration_cast<chrono::nanoseconds>(m_end_time_ - m_start_time_).count() : 0;
 	}
 /*******************************************************************************/
 
@@ -85,7 +97,9 @@ inline void GBaseAlgorithm<T, P>::util_end()
 {
 	m_end_time = chrono::high_resolution_clock::now();
 	m_allow_time_check = true;
+
 	end();
+
 	m_allow_time_check = false;
 }
 
@@ -100,10 +114,8 @@ inline vector<pair<size_t, P>> GBaseAlgorithm<T, P>::util_decide_next()
 		else
 			it++;
 
-	//Sends vector to the user function
 	decide_next(result);
 
-	//Returns vector or empty vector if user decides so
 	if (!result.empty())
 		last_edge = result.front().second;
 	return move(result);
@@ -116,6 +128,7 @@ inline void GBaseAlgorithm<T, P>::until_current_node_do(pair<size_t, Node<T>> p_
 	current_node = p_current_node;
 	m_visited_nodes[current_node.first] = true;
 	current_neighbors = m_adj_matrix.at(current_node.first);
+
 	current_node_do();
 }
 

@@ -3,8 +3,8 @@ template <typename T>
 class Node
 {
 public:
-	Node() : _val(T()) {}
-	Node(T val) : _val(val) {}
+	Node() : m_value_(T()) {}
+	Node(T val) : m_value_(val) {}
 	Node(const Node<T>& t) = default;
 	Node<T>& operator= (const Node<T>& t) = default;
 
