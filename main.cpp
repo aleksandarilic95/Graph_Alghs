@@ -22,9 +22,11 @@ int main() {
 
 	g.add_edge(0, 1, 1).add_edge(0, 2, 7).add_edge(0, 3, 6).add_edge(1, 3, 4).add_edge(1, 4, 1).add_edge(2, 5, 2).add_edge(3, 2, 3).add_edge(3, 5, 2).add_edge(4, 3, 2).add_edge(4, 5, 1);
 
-	DijsktrasAlgorithm da;
-
-	cout << galgs::is_cyclic(g) << endl;
+	cout << "TEST 1: is_cyclic() ";
+	if (galgs::is_cyclic(g))
+		cout << "FAILED";
+	else
+		cout << "PASSED" << endl;
 
 	return 0;
 }
@@ -38,10 +40,10 @@ void DijsktrasAlgorithm::start()
 
 void DijsktrasAlgorithm::current_node_do()
 {
-	nodes[current_node.first] = current_node.second.getValue();
+	nodes[current_node_idx] = current_node_value.getValue();
 	for (auto&& i : current_neighbors)
-		if (distance_from_start[i.first] > distance_from_start[current_node.first] + i.second)
-			distance_from_start[i.first] = distance_from_start[current_node.first] + i.second;
+		if (distance_from_start[i.first] > distance_from_start[current_node_idx] + i.second)
+			distance_from_start[i.first] = distance_from_start[current_node_idx] + i.second;
 }
 
 void DijsktrasAlgorithm::decide_next(vector<pair<size_t, int>>& vec)

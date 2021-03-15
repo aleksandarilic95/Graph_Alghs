@@ -45,8 +45,6 @@ namespace galgs {
 		return fin.get_result();
 	}
 
-
-
 	template<typename T, typename P, class UnaryPredicate>
 	constexpr bool all_of(Graph<T, P>& g, UnaryPredicate p)
 	{

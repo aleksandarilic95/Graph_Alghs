@@ -10,7 +10,7 @@ public:
 	void end() {};
 	void decide_next(vector<pair<size_t, P>>& vec) {};
 	void current_node_do() {
-		if (!m_p_(this->current_node.second.getValue()))
+		if (!m_p_(this->current_node_value.getValue()))
 			m_result_ = false;
 	};
 	constexpr int get_result() const noexcept {
@@ -30,7 +30,7 @@ public:
 	void end() {};
 	void decide_next(vector<pair<size_t, P>>& vec) {};
 	void current_node_do() {
-		if (m_p_(this->current_node.second.getValue()))
+		if (m_p_(this->current_node_value.getValue()))
 			m_result_ = true;
 	};
 	constexpr int get_result() const noexcept {
@@ -50,7 +50,7 @@ public:
 	void end() {};
 	void decide_next(vector<pair<size_t, P>>& vec) {};
 	void current_node_do() {
-		if (m_p_(this->current_node.second.getValue()))
+		if (m_p_(this->current_node_value.getValue()))
 			m_result_ = false;
 	};
 	constexpr int get_result() const noexcept {

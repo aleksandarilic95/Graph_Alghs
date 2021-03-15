@@ -13,8 +13,8 @@ C:\Users\aleks\source\repos\Graph\Graph\main.cpp(21): message : see reference to
               _Ty=std::string
           ]
 C:\Users\aleks\source\repos\Graph\Graph\main.cpp(21): message : see reference to class template instantiation 'Graph<std::string,int>' being compiled
-C:\Users\aleks\source\repos\Graph\Graph\GBaseAlgorithm.h(52,4): warning C4390: ';': empty controlled statement found; is this the intent?
-C:\Users\aleks\source\repos\Graph\Graph\GBaseAlgorithm.h(50): message : while compiling class template member function 'bool GBaseAlgorithm<std::string,int>::is_visited(const size_t) const'
+C:\Users\aleks\source\repos\Graph\Graph\GBaseAlgorithm.h(53,4): warning C4390: ';': empty controlled statement found; is this the intent?
+C:\Users\aleks\source\repos\Graph\Graph\GBaseAlgorithm.h(51): message : while compiling class template member function 'bool GBaseAlgorithm<std::string,int>::is_visited(const size_t) const'
 C:\Users\aleks\source\repos\Graph\Graph\Graph.h(103): message : see reference to function template instantiation 'bool GBaseAlgorithm<std::string,int>::is_visited(const size_t) const' being compiled
 C:\Users\aleks\source\repos\Graph\Graph\main.cpp(8): message : see reference to class template instantiation 'GBaseAlgorithm<std::string,int>' being compiled
   Graph.vcxproj -> C:\Users\aleks\source\repos\Graph\Debug\Graph.exe

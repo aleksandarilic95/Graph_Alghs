@@ -10,8 +10,8 @@ public:
 	void end() {};
 	void decide_next(vector<pair<size_t, P>>& vec) {};
 	void current_node_do() {
-		if (this->current_node.second.getValue() == m_value_)
-			m_result_ = this->current_node.first;
+		if (this->current_node_value.getValue() == m_value_)
+			m_result_ = this->current_node_idx;
 	};
 	constexpr int get_result() const noexcept {
 		return m_result_;
@@ -30,8 +30,8 @@ public:
 	void end() {};
 	void decide_next(vector<pair<size_t, P>>& vec) {};
 	void current_node_do() {
-		if (m_p_(this->current_node.second.getValue()))
-			m_result_ = this->current_node.first;
+		if (m_p_(this->current_node_value.getValue()))
+			m_result_ = this->ccurrent_node_idx;
 	};
 	constexpr int get_result() const noexcept {
 		return m_result_;
@@ -50,8 +50,8 @@ public:
 	void end() {};
 	void decide_next(vector<pair<size_t, P>>& vec) {};
 	void current_node_do() {
-		if (!m_p_(this->current_node.second.getValue()))
-			m_result_ = this->current_node.first;
+		if (!m_p_(this->current_node_value.getValue()))
+			m_result_ = this->current_node_idx;
 	};
 	constexpr int get_result() const noexcept {
 		return m_result_;

@@ -31,7 +31,7 @@ inline void IsCyclicAlg<T, P>::decide_next(vector<pair<size_t, P>>& vec)
 		m_node_color_[current_stack_pair.first] = 2;
 	else if (m_node_color_[current_stack_pair.first] != 2) {
 		m_node_color_[current_stack_pair.first] = 1;
-		m_node_color_stack_.push(make_pair(this->current_node.first, 1));
+		m_node_color_stack_.push(make_pair(this->current_node_idx, 1));
 		for (auto&& i : this->current_neighbors)
 			if (m_node_color_[i.first] == 1) {
 				m_result_ = true;
@@ -41,7 +41,7 @@ inline void IsCyclicAlg<T, P>::decide_next(vector<pair<size_t, P>>& vec)
 				return_vec.push_back(make_pair(i.first, P(0)));
 				m_node_color_stack_.push(make_pair(i.first, 0));
 			}
-		return_vec.insert(return_vec.begin(), make_pair(this->current_node.first, P(0)));
+		return_vec.insert(return_vec.begin(), make_pair(this->current_node_idx, P(0)));
 		vec.clear();
 		copy(return_vec.begin(), return_vec.end(), back_inserter(vec));
 	}
