@@ -190,8 +190,8 @@ Algorithms are found in `GraphAlgorithms.h` under namespace `galgs`:
 
 `int find(Graph<T,P>& g, T value)` - *Returns index of a node with a given value or returns -1 if the given value can't be found*
 
-`bool find_if(Graph<T,P>& g, UnaryPredicate p)` - *Returns index of a node that fulfils given unary predicate or returns -1 if no such node can be found*
+`int find_if(Graph<T,P>& g, UnaryPredicate p)` - *Returns index of a node that fulfils given unary predicate or returns -1 if no such node can be found*
 
-`bool find_if_not(Graph<T,P>& g, UnaryPredicate p)` - *Returns index of a node that doesn't fulfil given unary predicate or returns -1 if no such node can be found*
+`int find_if_not(Graph<T,P>& g, UnaryPredicate p)` - *Returns index of a node that doesn't fulfil given unary predicate or returns -1 if no such node can be found*
 
 `vector<size_t> top_sort(Graph<T,P>& g)` - *Returns vector of size_t objects of a given graph in topological sort or returns empty vector if graph if cyclic*
