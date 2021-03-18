@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Node.h"
-#include "GBaseAlgorithm.h"
+#include "../Algorithms/GBaseAlgorithm.h"
 
 #include <vector>
 #include <stack>

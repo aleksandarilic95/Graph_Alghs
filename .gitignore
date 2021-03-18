@@ -6,6 +6,15 @@
 # Prerequisites
 *.d
 
+# VS project files
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# Folders
+
+Debug/
+
 # Compiled Object files
 *.slo
 *.lo

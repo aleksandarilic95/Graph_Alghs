@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GBaseAlgorithm.h"
+#include "../GBaseAlgorithm.h"
 
 template <typename T, typename P>
 class IsCyclicAlg : public GBaseAlgorithm<T, P> {

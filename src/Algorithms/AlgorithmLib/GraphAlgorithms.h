@@ -1,12 +1,13 @@
 #pragma once
 
-#include "Graph.h"
+#include "../../Graph/Graph.h"
 #include <algorithm>
 
 #include "IsCyclicTemplate.h"
 #include "FindIfTemplate.h"
 #include "AllOfTemplate.h"
 #include "TopSortTemplate.h"
+#include "MSTTemplate.h"
 
 #include <vector>
 
@@ -76,12 +77,17 @@ namespace galgs {
 		if (is_cyclic(g))
 			return {};
 		TopSortAlg<T, P> ts;
-		int next = 4;
+		int next = 0;
 		g.DFS(next, ts);
 		while ((next = ts.get_next()) != -1) {
 			g.DFS(next, ts);
 		}
 		return ts.get_result();
+	}
+
+	template <typename T, typename P>
+	Graph<T, P> mst(Graph<T, P>& g) {
+
 	}
 
 	

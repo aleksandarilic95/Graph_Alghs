@@ -140,9 +140,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="AllOfTemplate.h" />
     <ClInclude Include="FindIfTemplate.h" />
     <ClInclude Include="Graph.h" />
@@ -151,6 +148,9 @@
     <ClInclude Include="IsCyclicTemplate.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="TopSortTemplate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
