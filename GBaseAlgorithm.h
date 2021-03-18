@@ -23,7 +23,7 @@ public:
 	void util_start(size_t, size_t, vector<vector<pair<size_t, P>>>);
 	void util_end();
 	vector<pair<size_t, P>> util_decide_next();
-	void until_current_node_do(pair<size_t, Node<T>>);
+	void util_current_node_do(pair<size_t, Node<T>>);
 /********************************************/
 
 /*Algorithm API for easier creating of algorithms*/
@@ -107,6 +107,8 @@ template<typename T, typename P>
 inline vector<pair<size_t, P>> GBaseAlgorithm<T, P>::util_decide_next()
 {
 	//Puts every non-visited neighbor into the vector
+
+	m_visited_nodes_[current_node_idx] = true;
 	vector<pair<size_t, P>> result_;
 	for(auto it = m_adj_matrix_[current_node_idx].begin(); it != m_adj_matrix_[current_node_idx].end();it++)
 		if (!is_visited(it->first))
@@ -120,14 +122,12 @@ inline vector<pair<size_t, P>> GBaseAlgorithm<T, P>::util_decide_next()
 }
 
 template<typename T, typename P>
-inline void GBaseAlgorithm<T, P>::until_current_node_do(pair<size_t, Node<T>> p_current_node)
+inline void GBaseAlgorithm<T, P>::util_current_node_do(pair<size_t, Node<T>> p_current_node)
 {
 	current_node_idx = p_current_node.first;
 	current_node_value = p_current_node.second;
-	m_visited_nodes_[current_node_idx] = true;
 	current_neighbors = m_adj_matrix_.at(current_node_idx);
 
-	current_node_do();
 }
 
 

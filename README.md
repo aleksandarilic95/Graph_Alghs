@@ -45,21 +45,21 @@ Additionally, `add_node()` and `add_edge()` can be appended to one another:
 
 ## *Graph traversal*
 
-Graph can be traversed using `void DFS(size_t start, DFSAlgorithmBase<T,P>& algorithm);` where *algorithm* is an object of a user class that inherits from the `DFSAlgorithmBase` class. More on inhereting algorithms later. Currently only Depth First Search traversal is implemented:
+Graph can be traversed using `void DFS(size_t start, GBaseAlgorithm<T,P>& algorithm);` or `void BFS(size_t start, GBaseAlgorithm<T,P>& algorithm);` where *algorithm* is an object of a user class that inherits from 'GBaseAlgorithm'.
 
 ```cpp
-  DijkstrasAlgorithm da; //Instance of a class DijsktrasAlgorithm that inherits from DFSAlgorithmBase.
+  DijkstrasAlgorithm da; //Instance of a class DijsktrasAlgorithm that inherits from GBaseAlgorithm.
   g.DFS(0, da); //Starts traversal from node 0 using DijkstrasAlgorithm.
 ```
 
 
 # Creating Algorithms
-## **DFSBaseAlgorithm**
+## **GBaseAlgorithm**
 
-Creating algorithms for Depth First Search traversal can be done by inheriting from DFSBaseAlgorithm class. To show an example, we're going to implement Dijkstra's Algorithm:
+Creating algorithms for Depth First Search traversal can be done by inheriting from GBaseAlgorithm class. To show an example, we're going to implement Dijkstra's Algorithm:
 
 ```cpp
-class DijsktrasAlgorithm : public DFSAlgorithmBase<std::string, int> {
+class DijsktrasAlgorithm : public GBaseAlgorithm<std::string, int> {
 public:
 	void start();
 	void current_node_do();
@@ -93,10 +93,10 @@ When you land on a node during traversal, do necessary stuff so your algorithm w
 ```cpp
 void DijsktrasAlgorithm::current_node_do()
 {
-	nodes[current_node.first] = current_node.second.getValue();
+	nodes[current_node_idx] = current_node_value.getValue();
 	for (auto&& i : current_neighbors)
-		if (distance_from_start[i.first] > distance_from_start[current_node.first] + i.second)
-			distance_from_start[i.first] = distance_from_start[current_node.first] + i.second;
+		if (distance_from_start[i.first] > distance_from_start[current_node_idx] + i.second)
+			distance_from_start[i.first] = distance_from_start[current_node_idx] + i.second;
 }
 ```
 
@@ -156,7 +156,9 @@ Algorithm time: 230 us
 
 `size_t graph_size()` - *Returns size of the graph*
 
-`pair<size_t, Node<T>> current_node;` - *Current node in traversal. First item is index of the node, second item is the node itself.*
+`size_t current_node_idx;` - *Index of a current node in traversal.*
+
+`size_t current_node_value;` - *Value of a current node in traversal.*
 
 `P last_edge;` - *Last edge used to arrive to the current node.*
 
@@ -174,3 +176,22 @@ During the `void end()` function, users can call:
 `long long algorithm_time_ns()` - *Returns time of the algorithm in nanoseconds*
 
 Calling these functions before `void end()` will return 0.
+
+## *Currently implemented Algorithms*
+Algorithms are found in `GraphAlgorithms.h` under namespace `galgs`:
+
+`bool is_cyclic(Graph<T,P>& g)` - *Checks if a given graph is cyclic*
+
+`bool any_of(Graph<T,P>& g, UnaryPredicate p)` - *Checks if any of the nodes in a graph fulfils given unary predicate p*
+
+`bool all_of(Graph<T,P>& g, UnaryPredicate p)` - *Checks if all of the nodes in a graph fulfils given unary predicate p*
+
+`bool none_of(Graph<T,P>& g, UnaryPredicate p)` - *Checks if none of the nodes in a graph fulfils given unary predicate p*
+
+`int find(Graph<T,P>& g, T value)` - *Returns index of a node with a given value or returns -1 if the given value can't be found*
+
+`bool find_if(Graph<T,P>& g, UnaryPredicate p)` - *Returns index of a node that fulfils given unary predicate or returns -1 if no such node can be found*
+
+`bool find_if_not(Graph<T,P>& g, UnaryPredicate p)` - *Returns index of a node that doesn't fulfil given unary predicate or returns -1 if no such node can be found*
+
+`vector<size_t> top_sort(Graph<T,P>& g)` - *Returns vector of size_t objects of a given graph in topological sort or returns empty vector if graph if cyclic*

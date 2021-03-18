@@ -6,6 +6,7 @@
 #include "IsCyclicTemplate.h"
 #include "FindIfTemplate.h"
 #include "AllOfTemplate.h"
+#include "TopSortTemplate.h"
 
 #include <vector>
 
@@ -67,6 +68,20 @@ namespace galgs {
 		NoneOfAlg<T, P, UnaryPredicate> no(p);
 		g.DFS(0, no);
 		return no.get_result();
+	}
+
+	template<typename T, typename P>
+	vector<size_t> top_sort (Graph<T, P>& g)
+	{
+		if (is_cyclic(g))
+			return {};
+		TopSortAlg<T, P> ts;
+		int next = 4;
+		g.DFS(next, ts);
+		while ((next = ts.get_next()) != -1) {
+			g.DFS(next, ts);
+		}
+		return ts.get_result();
 	}
 
 	

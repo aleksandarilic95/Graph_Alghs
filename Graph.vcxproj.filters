@@ -44,5 +44,8 @@
     <ClInclude Include="AllOfTemplate.h">
       <Filter>Header Files\GraphAlgorithms</Filter>
     </ClInclude>
+    <ClInclude Include="TopSortTemplate.h">
+      <Filter>Header Files\GraphAlgorithms</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

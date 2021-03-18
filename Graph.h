@@ -100,8 +100,9 @@ inline void Graph<T, P>::DFS(size_t start, GBaseAlgorithm<T, P>& algorithm)
 		node_stack.pop();
 
 		//If node is not visited, visit the node
+		algorithm.util_current_node_do(make_pair(current_node, *(m_nodes_[current_node]).first));
 		if (!algorithm.is_visited(current_node)) {
-			algorithm.until_current_node_do(make_pair(current_node, *(m_nodes_[current_node]).first));
+			algorithm.current_node_do();
 		}
 		
 		vector<pair<size_t, P>> next_nodes = algorithm.util_decide_next();
