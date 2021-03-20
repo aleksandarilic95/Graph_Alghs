@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Node.h"
+#include "../Graph/Node.h"
 
 #include <vector>
 #include <chrono>
@@ -24,6 +24,12 @@ public:
 	void util_end();
 	vector<pair<size_t, P>> util_decide_next();
 	void util_current_node_do(pair<size_t, Node<T>>);
+	int get_next() {
+		for (size_t i = 0; i < m_visited_nodes_.size(); i++)
+			if (m_visited_nodes_[i] == false)
+				return i;
+		return -1;
+	}
 /********************************************/
 
 /*Algorithm API for easier creating of algorithms*/

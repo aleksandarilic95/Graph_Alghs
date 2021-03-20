@@ -19,7 +19,11 @@ namespace galgs {
 	constexpr bool is_cyclic(Graph<T, P>& g)
 	{
 		IsCyclicAlg<T, P> ica;
-		g.DFS(0, ica);
+		int next = 5;
+		g.DFS(next, ica);
+		while ((next = ica.get_next()) != -1) {
+			g.DFS(next, ica);
+		}
 		return ica.get_result();
 	}
 
@@ -27,7 +31,11 @@ namespace galgs {
 	constexpr int find(Graph<T, P>& g, T value) 
 	{
 		FindAlg<T, P> f(value);
-		g.DFS(0,f);
+		int next = 0;
+		g.DFS(next, f);
+		while ((next = f.get_next()) != -1) {
+			g.DFS(next, f);
+		}
 		return f.get_result();
 	}
 
@@ -35,15 +43,23 @@ namespace galgs {
 	constexpr int find_if(Graph<T, P>& g, UnaryPredicate p)
 	{
 		FindIfAlg<T, P, UnaryPredicate> fi(p);
-		g.DFS(0, fi);
+		int next = 0;
+		g.DFS(next, fi);
+		while ((next = fi.get_next()) != -1) {
+			g.DFS(next, fi);
+		}
 		return fi.get_result();
 	}
 
 	template<typename T, typename P, class UnaryPredicate>
 	constexpr int find_if_not(Graph<T, P>& g, UnaryPredicate p)
 	{
-		FindIfNotAlg<T, P, UnaryPredicate> fin(p);
-		g.DFS(0, fin);
+		FindIfNotAlg<T, P, UnaryPredicate> fin(p); 
+		int next = 0;
+		g.DFS(next, fin);
+		while ((next = fin.get_next()) != -1) {
+			g.DFS(next, fin);
+		}
 		return fin.get_result();
 	}
 
@@ -51,7 +67,11 @@ namespace galgs {
 	constexpr bool all_of(Graph<T, P>& g, UnaryPredicate p)
 	{
 		AllOfAlg<T, P, UnaryPredicate> ao(p);
-		g.DFS(0, ao);
+		int next = 0;
+		g.DFS(next, ao);
+		while ((next = ao.get_next()) != -1) {
+			g.DFS(next, ao);
+		}
 		return ao.get_result();
 	}
 
@@ -59,7 +79,11 @@ namespace galgs {
 	constexpr bool any_of(Graph<T, P>& g, UnaryPredicate p)
 	{
 		AnyOfAlg<T, P, UnaryPredicate> ao(p);
-		g.DFS(0, ao);
+		int next = 0;
+		g.DFS(next, ao);
+		while ((next = ao.get_next()) != -1) {
+			g.DFS(next, ao);
+		}
 		return ao.get_result();
 	}
 
@@ -67,7 +91,11 @@ namespace galgs {
 	constexpr bool none_of(Graph<T, P>& g, UnaryPredicate p)
 	{
 		NoneOfAlg<T, P, UnaryPredicate> no(p);
-		g.DFS(0, no);
+		int next = 0;
+		g.DFS(next, no);
+		while ((next = no.get_next()) != -1) {
+			g.DFS(next, no);
+		}
 		return no.get_result();
 	}
 

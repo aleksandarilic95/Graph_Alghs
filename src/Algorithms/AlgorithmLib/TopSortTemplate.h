@@ -34,12 +34,7 @@ public:
 	};
 	void current_node_do() { m_visited_nodes_help_[this->current_node_idx] = true; };
 	constexpr vector<size_t> get_result() const noexcept { return this->m_result_; }
-	int get_next() {
-		for (size_t i = 0; i < m_visited_nodes_help_.size(); i++)
-			if (m_visited_nodes_help_[i] == false)
-				return i;
-		return -1;
-	}
+	
 private:
 	vector<bool> m_visited_nodes_help_;
 	vector<bool> m_perm_nodes_;
