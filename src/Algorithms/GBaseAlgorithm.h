@@ -5,6 +5,7 @@
 #include <vector>
 #include <chrono>
 #include <stack>
+#include <iostream>
 
 using namespace std;
 
@@ -23,7 +24,8 @@ public:
 	void util_start(size_t, size_t, vector<vector<pair<size_t, P>>>);
 	void util_end();
 	vector<pair<size_t, P>> util_decide_next();
-	void util_current_node_do(pair<size_t, Node<T>>);
+	void util_current_node_do(pair<Node<T>, size_t>);
+	void util_callback();
 	int get_next() {
 		for (size_t i = 0; i < m_visited_nodes_.size(); i++)
 			if (m_visited_nodes_[i] == false)
@@ -42,6 +44,8 @@ protected:
 
 /*Private members to help algorithm function*/
 private:
+	stack<pair<Node<T>, size_t>> node_stack;
+	bool first = true;
 	vector<vector<pair<size_t, P>>> m_adj_matrix_;
 	stack<P> m_last_edges_;
 	vector<bool> m_visited_nodes_;
@@ -92,7 +96,10 @@ inline void GBaseAlgorithm<T, P>::util_start(size_t p_node_size, size_t p_start_
 	m_start_time_ = chrono::high_resolution_clock::now();
 	m_graph_size_ = p_node_size;
 	m_start_node_ = p_start_node;
-	m_visited_nodes_.assign(m_graph_size_, false);
+	if (first) {
+		m_visited_nodes_.assign(m_graph_size_, false);
+		first = false;
+	}
 	m_adj_matrix_ = p_adj_matrix;
 
 	start();
@@ -128,12 +135,23 @@ inline vector<pair<size_t, P>> GBaseAlgorithm<T, P>::util_decide_next()
 }
 
 template<typename T, typename P>
-inline void GBaseAlgorithm<T, P>::util_current_node_do(pair<size_t, Node<T>> p_current_node)
+inline void GBaseAlgorithm<T, P>::util_current_node_do(pair<Node<T>, size_t> p_current_node)
 {
-	current_node_idx = p_current_node.first;
-	current_node_value = p_current_node.second;
+	node_stack.push(p_current_node);
+	current_node_idx = p_current_node.second;
+	current_node_value = p_current_node.first;
 	current_neighbors = m_adj_matrix_.at(current_node_idx);
 
+}
+
+template<typename T, typename P>
+inline void GBaseAlgorithm<T, P>::util_callback()
+{
+	auto current_node_temp = node_stack.top();
+	node_stack.pop();
+	current_node_idx = current_node_temp.second;
+	current_node_value = current_node_temp.first;
+	cout << "Callback " << current_node_idx << endl;
 }
 
 

@@ -10,6 +10,7 @@
 #include "MSTTemplate.h"
 
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -19,11 +20,12 @@ namespace galgs {
 	constexpr bool is_cyclic(Graph<T, P>& g)
 	{
 		IsCyclicAlg<T, P> ica;
-		int next = 5;
+		int next = 0;
 		g.DFS(next, ica);
 		while ((next = ica.get_next()) != -1) {
 			g.DFS(next, ica);
 		}
+		cout << ica.get_time_us() << endl;
 		return ica.get_result();
 	}
 
@@ -91,7 +93,7 @@ namespace galgs {
 	constexpr bool none_of(Graph<T, P>& g, UnaryPredicate p)
 	{
 		NoneOfAlg<T, P, UnaryPredicate> no(p);
-		int next = 0;
+		int next = 999;
 		g.DFS(next, no);
 		while ((next = no.get_next()) != -1) {
 			g.DFS(next, no);

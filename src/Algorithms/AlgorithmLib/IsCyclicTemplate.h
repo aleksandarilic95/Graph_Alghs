@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../GBaseAlgorithm.h"
+#include <iostream>
 
 template <typename T, typename P>
 class IsCyclicAlg : public GBaseAlgorithm<T, P> {
@@ -9,16 +10,20 @@ public:
 		m_node_color_.assign(this->graph_size(), 0);
 		m_node_color_stack_.push(make_pair(this->start_node(), 0));
 	};
-	void end() {};
+	void end() { alg_time += this->algorithm_time_us(); };
 	void decide_next(vector<pair<size_t, P>>& vec);
 	void current_node_do() {};
 	constexpr bool get_result() const noexcept {
 		return m_result_;
 	}
+	constexpr long long get_time_us() const noexcept {
+		return alg_time;
+	}
 private:
 	stack<pair<size_t, size_t>> m_node_color_stack_;
 	vector<size_t> m_node_color_;
 	bool m_result_ = false;
+	long long alg_time = 0;
 };
 
 template<typename T, typename P>
