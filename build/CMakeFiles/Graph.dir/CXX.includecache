@@ -1,0 +1,96 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/elmo/GitHub repos/Graph/Graph_Alghs/main.cpp
+src/Graph/Graph.h
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Graph/Graph.h
+src/Algorithms/AlgorithmLib/GraphAlgorithms.h
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/GraphAlgorithms.h
+iostream
+-
+string
+-
+fstream
+-
+algorithm
+-
+climits
+-
+
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/AllOfTemplate.h
+../GBaseAlgorithm.h
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/GBaseAlgorithm.h
+
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/FindIfTemplate.h
+../GBaseAlgorithm.h
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/GBaseAlgorithm.h
+
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/GraphAlgorithms.h
+../../Graph/Graph.h
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Graph/Graph.h
+algorithm
+-
+IsCyclicTemplate.h
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/IsCyclicTemplate.h
+FindIfTemplate.h
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/FindIfTemplate.h
+AllOfTemplate.h
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/AllOfTemplate.h
+TopSortTemplate.h
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/TopSortTemplate.h
+MSTTemplate.h
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/MSTTemplate.h
+vector
+-
+iostream
+-
+
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/IsCyclicTemplate.h
+../GBaseAlgorithm.h
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/GBaseAlgorithm.h
+iostream
+-
+vector
+-
+stack
+-
+
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/MSTTemplate.h
+
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/TopSortTemplate.h
+../GBaseAlgorithm.h
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/GBaseAlgorithm.h
+
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/GBaseAlgorithm.h
+../Graph/Node.h
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Graph/Node.h
+vector
+-
+chrono
+-
+stack
+-
+iostream
+-
+
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Graph/Graph.h
+Node.h
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Graph/Node.h
+../Algorithms/GBaseAlgorithm.h
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/GBaseAlgorithm.h
+vector
+-
+stack
+-
+queue
+-
+iostream
+-
+
+/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Graph/Node.h
+

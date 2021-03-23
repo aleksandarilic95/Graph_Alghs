@@ -5,46 +5,66 @@
 #include <vector>
 #include <chrono>
 #include <stack>
+#include <iostream>
 
 using namespace std;
+
+template <typename T, typename P>
+class Graph;
 
 template <typename T, typename P>
 class GBaseAlgorithm
 {
 /*Algorithm API that needs to be overridden for the algorithm to work*/
 public:
+	explicit GBaseAlgorithm<T,P>(Graph<T,P>& p_graph_) : m_graph_(p_graph_){};
+
 	virtual void start() = 0;
 	virtual void current_node_do() = 0;
-	virtual void decide_next([[maybe_unused]] vector<pair<size_t, P>>&) {};
+	virtual void decide_next(vector<pair<size_t, P>>&) {};
 	virtual void end() = 0;
+	virtual void callback() {}
+	virtual void check_1(size_t current_node_idx_check_1) {}
 /*********************************************************************/
 
 /*Helper functions that make algorithms work*/
-	void util_start(size_t, size_t, vector<vector<pair<size_t, P>>>);
+	void util_start(size_t, size_t, Graph<T,P>& p_graph);
 	void util_end();
 	vector<pair<size_t, P>> util_decide_next();
-	void util_current_node_do(pair<size_t, Node<T>>);
+	void util_current_node_do(pair<Node<T>, size_t>);
+	void util_callback();
 	int get_next() {
 		for (size_t i = 0; i < m_visited_nodes_.size(); i++)
 			if (m_visited_nodes_[i] == false)
 				return i;
 		return -1;
 	}
+	void set_decide_next(bool tmp) noexcept { F_DECIDE_NEXT_ALLOW = tmp; }
 /********************************************/
 
 /*Algorithm API for easier creating of algorithms*/
 protected:
+	
+	
 	size_t current_node_idx;
 	Node<T> current_node_value;
 	P last_edge;
 	vector<pair<size_t, P>> current_neighbors;
+	
+	bool F_DECIDE_NEXT_ALLOW = false;
+	auto& get_neighbors(size_t idx) { return m_graph_.m_adj_matrix_[idx]; }	
 /*************************************************/
 
 /*Private members to help algorithm function*/
 private:
+	stack<pair<Node<T>, size_t>> node_stack;
+	bool first = true;
 	vector<vector<pair<size_t, P>>> m_adj_matrix_;
 	stack<P> m_last_edges_;
 	vector<bool> m_visited_nodes_;
+	Graph<T,P>& m_graph_;
+	
+	vector<bool> m_nodes_on_stack_;
 /********************************************/
 
 /*Public API for starting node, graph size and check if visited*/
@@ -87,15 +107,19 @@ public:
 };
 
 template<typename T, typename P>
-inline void GBaseAlgorithm<T, P>::util_start(size_t p_node_size, size_t p_start_node, vector<vector<pair<size_t, P>>> p_adj_matrix)
+inline void GBaseAlgorithm<T, P>::util_start(size_t p_node_size, size_t p_start_node, Graph<T,P>& p_graph)
 {
 	m_start_time_ = chrono::high_resolution_clock::now();
 	m_graph_size_ = p_node_size;
 	m_start_node_ = p_start_node;
-	m_visited_nodes_.assign(m_graph_size_, false);
-	m_adj_matrix_ = p_adj_matrix;
-
+	if (first) {
+		m_visited_nodes_.assign(m_graph_size_, false);
+		m_nodes_on_stack_.assign(m_graph_size_, false);
+		first = false;
+	}
+	m_graph_ = p_graph;
 	start();
+	
 }
 
 template<typename T, typename P>
@@ -114,13 +138,18 @@ inline vector<pair<size_t, P>> GBaseAlgorithm<T, P>::util_decide_next()
 {
 	//Puts every non-visited neighbor into the vector
 
-	m_visited_nodes_[current_node_idx] = true;
 	vector<pair<size_t, P>> result_;
-	for(auto it = m_adj_matrix_[current_node_idx].begin(); it != m_adj_matrix_[current_node_idx].end();it++)
-		if (!is_visited(it->first))
+	
+	for(auto it = m_graph_.m_adj_matrix_[current_node_idx].begin(); it != m_graph_.m_adj_matrix_[current_node_idx].end(); it++)
+		if (!m_nodes_on_stack_[it->first]) {
 			result_.push_back(*it);
+			m_nodes_on_stack_[it->first] = true;
+		}
 
-	decide_next(result_);
+	if(F_DECIDE_NEXT_ALLOW)
+		decide_next(result_);
+
+	
 
 	if (!result_.empty())
 		last_edge = result_.front().second;
@@ -128,12 +157,30 @@ inline vector<pair<size_t, P>> GBaseAlgorithm<T, P>::util_decide_next()
 }
 
 template<typename T, typename P>
-inline void GBaseAlgorithm<T, P>::util_current_node_do(pair<size_t, Node<T>> p_current_node)
+inline void GBaseAlgorithm<T, P>::util_current_node_do(pair<Node<T>, size_t> p_current_node)
 {
-	current_node_idx = p_current_node.first;
-	current_node_value = p_current_node.second;
-	current_neighbors = m_adj_matrix_.at(current_node_idx);
+	
+	node_stack.push(p_current_node);
+	
+	current_node_idx = p_current_node.second;
+	current_node_value = p_current_node.first;
+	
+	m_visited_nodes_[current_node_idx] = true;
+	
+	current_neighbors = get_neighbors(current_node_idx);
+	
+	current_node_do();
 
+}
+
+template<typename T, typename P>
+inline void GBaseAlgorithm<T, P>::util_callback()
+{
+	auto current_node_temp = node_stack.top();
+	node_stack.pop();
+	current_node_idx = current_node_temp.second;
+	current_node_value = current_node_temp.first;
+	callback();
 }
 
 

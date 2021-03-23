@@ -14,14 +14,16 @@ template <typename T, typename P>
 class Graph
 {
 public:
+
+	friend class GBaseAlgorithm<T,P>;
 	Graph() {}
 	explicit Graph(initializer_list<T> nodes);
 	/*TODO: Implement rule of 5*/
 	Graph(const Graph& g) = delete;
-	Graph& operator= (const Graph& rhs) = delete;
+	Graph& operator= (const Graph& rhs) = default;
 
 	Graph(Graph&& g) = delete;
-	Graph& operator= (Graph&& rhs) = delete;
+	Graph& operator= (Graph&& rhs) = default;
 
 	~Graph() {}
 	/*****************************/
@@ -36,12 +38,13 @@ public:
 
 
 	void DFS(size_t start, GBaseAlgorithm<T, P>& algorithm);
+	void DFS_util(size_t start, GBaseAlgorithm<T, P>& algorithm);
 
 	void BFS(size_t start, GBaseAlgorithm<T, P>& algorithm);
 
 	size_t size() const noexcept { return m_nodes_.size(); }
 private:
-	vector<pair<Node<T>*, size_t>> m_nodes_; 
+	vector<pair<Node<T>, size_t>> m_nodes_;
 	vector<vector<pair<size_t,P>>> m_adj_matrix_; 
 };
 
@@ -49,7 +52,7 @@ template<typename T, typename P>
 inline Graph<T, P>::Graph(initializer_list<T> nodes)
 {
 	for (const T& node : nodes) {
-		m_nodes_.push_back(make_pair(new Node<T>(node), size()));
+		m_nodes_.push_back(make_pair(Node<T>(node), size()));
 		m_adj_matrix_.push_back({});
 	}
 }
@@ -57,7 +60,8 @@ inline Graph<T, P>::Graph(initializer_list<T> nodes)
 template<typename T, typename P>
 inline Graph<T, P>& Graph<T, P>::add_node(T node) noexcept
 {
-	
+	m_nodes_.push_back(make_pair(Node<T>{node}, size()));
+	m_adj_matrix_.push_back({});
 	return *this;
 }
 
@@ -65,7 +69,7 @@ template<typename T, typename P>
 inline Graph<T, P>& Graph<T, P>::add_node(initializer_list<T> nodes) noexcept
 {
 	for (const T& node : nodes) {
-		m_nodes_.push_back(make_pair(new Node<T>(node), size()));
+		m_nodes_.push_back(make_pair(Node<T>{node}, size()));
 		m_adj_matrix_.push_back({});
 	}
 	return *this;
@@ -92,26 +96,27 @@ inline void Graph<T, P>::DFS(size_t start, GBaseAlgorithm<T, P>& algorithm)
 {
 	if (!size())
 		; //TODO: Throw: Can't call DFS on empty graph
-	algorithm.util_start(size(), start, m_adj_matrix_);
-	stack<size_t> node_stack({start});
-	while (!node_stack.empty()) {
-		//Pop starting node from the stack
-		size_t current_node = node_stack.top();
-		node_stack.pop();
-
-		//If node is not visited, visit the node
-		algorithm.util_current_node_do(make_pair(current_node, *(m_nodes_[current_node]).first));
-		if (!algorithm.is_visited(current_node)) {
-			algorithm.current_node_do();
-		}
-		
-		vector<pair<size_t, P>> next_nodes = algorithm.util_decide_next();
-		if(next_nodes.size())
-			for (auto i : next_nodes)
-				node_stack.push(i.first);
-	}
+	algorithm.util_start(size(), start, *this);
+	int next;
+	DFS_util(start, algorithm);
+	while((next = algorithm.get_next())!= -1)
+		DFS_util(next, algorithm);
 	algorithm.util_end();
 }
+
+template<typename T, typename P>
+inline void Graph<T, P>::DFS_util(size_t start, GBaseAlgorithm<T, P>& algorithm)
+{
+
+	algorithm.util_current_node_do(m_nodes_[start]);
+	for (auto&& i : m_adj_matrix_[start]) {
+		if (!algorithm.is_visited(i.first))
+			DFS_util(i.first, algorithm);
+	}
+	algorithm.util_callback();
+}
+
+
 
 template<typename T, typename P>
 inline void Graph<T, P>::BFS(size_t start, GBaseAlgorithm<T, P>& algorithm)

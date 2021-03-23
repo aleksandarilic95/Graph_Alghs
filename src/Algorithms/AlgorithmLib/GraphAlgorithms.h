@@ -10,20 +10,22 @@
 #include "MSTTemplate.h"
 
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
 namespace galgs {
 
 	template<typename T, typename P>
-	constexpr bool is_cyclic(Graph<T, P>& g)
+	constexpr bool is_cyclic(Graph<T, P>& g, size_t start = 0)
 	{
-		IsCyclicAlg<T, P> ica;
-		int next = 5;
+		IsCyclicAlg<T, P> ica(g);
+		int next = start;
 		g.DFS(next, ica);
 		while ((next = ica.get_next()) != -1) {
 			g.DFS(next, ica);
 		}
+		cout << ica.get_result() << endl;
 		return ica.get_result();
 	}
 
@@ -91,7 +93,7 @@ namespace galgs {
 	constexpr bool none_of(Graph<T, P>& g, UnaryPredicate p)
 	{
 		NoneOfAlg<T, P, UnaryPredicate> no(p);
-		int next = 0;
+		int next = 999;
 		g.DFS(next, no);
 		while ((next = no.get_next()) != -1) {
 			g.DFS(next, no);
