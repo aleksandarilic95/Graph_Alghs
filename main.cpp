@@ -45,9 +45,6 @@ public:
  	
 	void end() {
 		cout << (double)algorithm_time_us() / 1e6 << endl;
-		auto vec = order(max_distance());
-		for(auto&& i : vec)
-			cout << i << endl;
 	}
 	
 	
@@ -63,14 +60,14 @@ private:
 
 
 void load_graph(Graph<int, int>& g) {
-	ifstream is("edges.txt");
+	ifstream is("edges2.txt");
 	while (!is.eof()) {
 		string current_line;
 		getline(is, current_line);
 		size_t del = current_line.find(" ");
 		string one = current_line.substr(0, del);
 		string two = current_line.substr(del + 1, -1);
-		if (one == "144149" && two == "174147")
+		if (one == "3000" && two == "458")
 			break;
 		g.add_edge(stoi(one) - 1, stoi(two) - 1, 1);
 	}
@@ -82,10 +79,27 @@ void load_graph(Graph<int, int>& g) {
 
 int main() {
 	Graph<int, int> g;
-	for (auto i = 0; i < 174147; i++)
+	for (auto i = 0; i < 3000; i++)
 		g.add_node(i);
 	load_graph(g);
-	Dijkstras da(g);
-	g.DFS(0, da);
+	// Dijkstras da(g);
+	// cout << "Dijkstra: " << endl;
+	// g.DFS(0, da);
+	// cout << "is_cyclic: " << endl;
+	// cout << galgs::is_cyclic(g) << endl;
+	// cout << "all_of: " << endl;
+	// galgs::all_of(g,[=](int i) {return i == 0;});
+	// cout << "any_of: " << endl;
+	// galgs::any_of(g,[=](int i) {return i == 0;});
+	// cout << "none_of: " << endl;
+	// galgs::none_of(g,[=](int i) {return i == 0;});
+	// cout << "find: " << endl;
+	// galgs::find(g, 1);
+	// cout << "find_if: " << endl;
+	// galgs::find_if(g, [=](int i) {return i == 1;});
+	// cout << "find_if_not: " << endl;
+	// galgs::find_if_not(g, [=](int i) {return i == 1;});
+	cout << "top_sort: " << endl;
+	cout << galgs::top_sort(g).size() << endl;
 	return 0;
 }

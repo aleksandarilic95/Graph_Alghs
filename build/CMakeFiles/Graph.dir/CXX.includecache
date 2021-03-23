@@ -77,6 +77,8 @@ stack
 -
 iostream
 -
+algorithm
+-
 
 /home/elmo/GitHub repos/Graph/Graph_Alghs/src/Graph/Graph.h
 Node.h

@@ -5,9 +5,10 @@
 template <typename T, typename P, class UnaryPredicate>
 class AllOfAlg : public GBaseAlgorithm<T, P> {
 public:
-	AllOfAlg(UnaryPredicate p) : m_p_(p), m_result_(true) {};
+	AllOfAlg(Graph<T,P>& g, UnaryPredicate p) : m_p_(p), m_result_(true), GBaseAlgorithm<T,P>(g) {};
 	void start() {};
-	void end() {};
+	void end() {
+		cout << (double)this->algorithm_time_us() / 1E6 << endl;};
 	void decide_next(vector<pair<size_t, P>>& vec) {};
 	void current_node_do() {
 		if (!m_p_(this->current_node_value.getValue()))
@@ -25,9 +26,10 @@ private:
 template <typename T, typename P, class UnaryPredicate>
 class AnyOfAlg : public GBaseAlgorithm<T, P> {
 public:
-	AnyOfAlg(UnaryPredicate p) : m_p_(p), m_result_(false) {};
+	AnyOfAlg(Graph<T,P>& g, UnaryPredicate p) : m_p_(p), m_result_(true), GBaseAlgorithm<T,P>(g) {};
 	void start() {};
-	void end() {};
+	void end() {
+		cout << (double)this->algorithm_time_us() / 1E6 << endl;};
 	void decide_next(vector<pair<size_t, P>>& vec) {};
 	void current_node_do() {
 		if (m_p_(this->current_node_value.getValue()))
@@ -45,9 +47,10 @@ private:
 template <typename T, typename P, class UnaryPredicate>
 class NoneOfAlg : public GBaseAlgorithm<T, P> {
 public:
-	NoneOfAlg(UnaryPredicate p) : m_p_(p), m_result_(true) {};
+	NoneOfAlg(Graph<T,P>& g, UnaryPredicate p) : m_p_(p), m_result_(true), GBaseAlgorithm<T,P>(g) {};
 	void start() {};
-	void end() {};
+	void end() {
+		cout << (double)this->algorithm_time_us() / 1E6 << endl;};
 	void decide_next(vector<pair<size_t, P>>& vec) {};
 	void current_node_do() {
 		if (m_p_(this->current_node_value.getValue()))

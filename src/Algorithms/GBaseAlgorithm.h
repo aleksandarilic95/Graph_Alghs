@@ -6,6 +6,7 @@
 #include <chrono>
 #include <stack>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -34,10 +35,11 @@ public:
 	void util_current_node_do(pair<Node<T>, size_t>);
 	void util_callback();
 	int get_next() {
-		for (size_t i = 0; i < m_visited_nodes_.size(); i++)
-			if (m_visited_nodes_[i] == false)
-				return i;
-		return -1;
+		auto&& it = std::find_if(m_visited_nodes_.begin(), m_visited_nodes_.end(), [=](bool p_curr) {return p_curr == false;});
+		if(it == m_visited_nodes_.end())
+			return -1;
+		else
+			return std::distance(m_visited_nodes_.begin(), it);
 	}
 	void set_decide_next(bool tmp) noexcept { F_DECIDE_NEXT_ALLOW = tmp; }
 /********************************************/
