@@ -7,8 +7,7 @@ class FindAlg : public GBaseAlgorithm<T, P> {
 public:
 	FindAlg(T p_value) : m_value_(std::move(p_value)) {}
 	void start() {};
-	void end() {
-		std::cout << (double)this->algorithm_time_us() / 1E6 << std::endl;};
+	void end() {};
 	void decide_next(std::vector<typename Graph<T,P>::Edge>& vec) {};
 	void current_node_do() {
 		if (*(this->current_node_value_ptr) == m_value_)
@@ -49,8 +48,7 @@ class FindIfNotAlg : public GBaseAlgorithm<T, P> {
 public:
 	FindIfNotAlg(UnaryPredicate p_predicate) : m_p_(p_predicate) {}
 	void start() {};
-	void end() {
-		std::cout << (double)this->algorithm_time_us() / 1E6 << std::endl;};
+	void end() {};
 	void decide_next(std::vector<typename Graph<T,P>::Edge>& vec) {};
 	void current_node_do() {
 		if (!m_p_(*(this->current_node_value_ptr)))

@@ -6,9 +6,7 @@ template <typename T, typename P>
 class TopSortAlg : public GBaseAlgorithm<T, P> {
 public:
 	void start() {};
-	void end() {
-		std::cout << (double)this->algorithm_time_us() / 1E6 << std::endl;
-	};
+	void end() {};
 	void decide_next(std::vector<typename Graph<T,P>::Edge>& vec) {};
 	void current_node_do() {};
 

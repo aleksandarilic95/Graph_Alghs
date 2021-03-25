@@ -19,8 +19,6 @@ public:
 	};
 
 	void end() {
-		std::cout << debug_count << std::endl;
-		std::cout << (double)this->algorithm_time_us() / 1E6 << std::endl;
 	};
 
 	void decide_next(std::vector<typename Graph<T,P>::Edge>& vec) {
@@ -33,7 +31,6 @@ public:
 				result = true;
 				this->finish_algorithm();
 			}
-		debug_count++;
 	};
 
 	void callback() {
@@ -47,5 +44,4 @@ public:
 private:
 	bool result = false;
 	bool* m_on_stack_ = 0;
-	size_t debug_count = 0;	
 };

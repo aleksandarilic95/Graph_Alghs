@@ -211,4 +211,10 @@ Algorithms are found in `GraphAlgorithms.h` under namespace `galgs`:
 
 The next tests are done with a graph containing 174K nodes and 8M edges:
 
-###### Empty DFS Traversal: 0.206782
+#### Empty DFS Traversal: 0.20s
+
+#### is_cyclic(): 0.07s (Stopped at node #25708 when it found a cycle)
+
+#### all_of(): 0.22s
+
+#### 

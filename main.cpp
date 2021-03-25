@@ -42,8 +42,7 @@ int main() {
 	for (auto i = 0; i < 174147; i++)
 		g.add_node(i);
 	load_graph(g);
-	EmptyDFS edfs;
-	g.DFS(g.size() - 1,edfs);
+	galgs::find_if(g, [=](int i) {return i < -1;});
 
 
 	return 0;

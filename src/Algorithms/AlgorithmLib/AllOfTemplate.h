@@ -8,8 +8,7 @@ public:
 
 	AllOfAlg(UnaryPredicate p_predicate) : m_p_(p_predicate) {}
 	void start() {};
-	void end() {
-		std::cout << (double)this->algorithm_time_us() / 1E6 << std::endl;};
+	void end() {};
 	void decide_next(std::vector<typename Graph<T,P>::Edge>& vec) {};
 	void current_node_do() {
 		if (!m_p_(*(this->current_node_value_ptr))) {
@@ -32,8 +31,7 @@ public:
 
 	AnyOfAlg(UnaryPredicate p_predicate) : m_p_(p_predicate) {}
 	void start() {};
-	void end() {
-		std::cout << (double)this->algorithm_time_us() / 1E6 << std::endl;};
+	void end() {};
 	void decide_next(std::vector<typename Graph<T,P>::Edge>& vec) {};
 	void current_node_do() {
 		if (m_p_(*(this->current_node_value_ptr)))
@@ -53,16 +51,13 @@ class NoneOfAlg : public GBaseAlgorithm<T, P> {
 public:
 	NoneOfAlg(UnaryPredicate p_predicate) : m_p_(p_predicate) {}
 	void start() {};
-	void end() {
-		std::cout << debug_count << std::endl;
-		std::cout << (double)this->algorithm_time_us() / 1E6 << std::endl;};
+	void end() {};
 	void decide_next(std::vector<typename Graph<T,P>::Edge>& vec) {};
 	void current_node_do() {
 		if (m_p_(*(this->current_node_value_ptr))) {
 			m_result_ = false;
 			this->finish_algorithm();
 		}
-		debug_count++;
 	}
 	constexpr int get_result() const noexcept {
 		return m_result_;
@@ -70,6 +65,5 @@ public:
 private:
 	bool m_result_;
 	UnaryPredicate m_p_;
-	size_t debug_count = 0;
 
 };
