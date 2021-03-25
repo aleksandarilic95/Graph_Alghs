@@ -59,15 +59,15 @@ Graph can be traversed using `void DFS(size_t start, GBaseAlgorithm<T,P>& algori
 Creating algorithms for Depth First Search traversal can be done by inheriting from GBaseAlgorithm class. To show an example, we're going to implement Dijkstra's Algorithm:
 
 ```cpp
-class DijsktrasAlgorithm : public GBaseAlgorithm<std::string, int> {
+class DijsktrasAlgorithm : public GBaseAlgorithm<int, int> {
 public:
 	void start();
 	void current_node_do();
-	void decide_next(vector<pair<size_t, int>>&);
+	void decide_next(vector<Graph<int, int>::Edge>&) {};
 	void end();
 private:
 	vector<int> distance_from_start;
-	vector<std::string> nodes;
+	vector<int> nodes;
 };
 ```
 
@@ -82,7 +82,7 @@ void DijsktrasAlgorithm::start()
 {
 	distance_from_start.assign(graph_size(), INT_MAX);
 	distance_from_start[start_node()] = 0;
-	nodes.assign(graph_size(), "");
+	nodes.assign(graph_size(), -1);
 }
 ```
 
@@ -93,19 +93,19 @@ When you land on a node during traversal, do necessary stuff so your algorithm w
 ```cpp
 void DijsktrasAlgorithm::current_node_do()
 {
-	nodes[current_node_idx] = current_node_value.getValue();
-	for (auto&& i : current_neighbors)
-		if (distance_from_start[i.first] > distance_from_start[current_node_idx] + i.second)
-			distance_from_start[i.first] = distance_from_start[current_node_idx] + i.second;
+	nodes[current_node_idx] = *current_node_value_ptr;
+	for (auto&& edge : get_neighbors(current_node_idx))
+		if (distance_from_start[edge.m_edge_next_] > distance_from_start[current_node_idx] + *edge.m_edge_value_ptr_)
+			distance_from_start[edge.m_edge_next_] = distance_from_start[current_node_idx] + *edge.m_edge_value_ptr_;
 }
 ```
 
-`void decide_next(vector<pair<size_t, int>>& vec)`:
+`void decide_next(vector<Graph<int, int>::Edge>& vec)`:
 
-Given a vector of possible next nodes, decide which nodes you want visited. Algorithm will visit first node in the vector next. If you want no nodes visited, empty the vector and return from the function. Vector is made out of pairs, first element in pair represents next node, second pair represents the weight of the edge.
+Given a vector of possible next nodes, decide which nodes you want visited. Algorithm will visit first node in the vector next. If you want no nodes visited, empty the vector and return from the function. Vector is made out of structure Edge, containing number of the node that's about to be visited (`m_edge_next_`) and pointer to an edge weight (`m_edge_value_ptr_`).
 
 ```cpp
-void DijsktrasAlgorithm::decide_next(vector<pair<size_t, int>>& vec)
+void DijsktrasAlgorithm::decide_next(vvector<Graph<int, int>::Edge>& vec)
 {
 	return;
 }
@@ -119,10 +119,7 @@ After the algorithm finishes, do all the necessary work.
 ```cpp
 void DijsktrasAlgorithm::end()
 {
-	for (size_t i = 0; i < graph_size(); i++)
-		cout << nodes.at(i) << ": " << distance_from_start.at(i) << endl;
-
-	cout << "Algorithm time: " << algorithm_time_us() << " us" << endl;
+	cout << "Algorithm time: " << (double)algorithm_time_us() / 1e6 << " us" << endl;
 }
 ```
 
@@ -130,7 +127,7 @@ With a simple main function:
 
 ```cpp
 int main() {
-	Graph<string, int> g({ "A", "B", "C", "D", "E", "F" });
+	Graph<int, int> g({ 0,1,2,3,4,5 });
 	g.add_edge(0, 1, 1).add_edge(0, 2, 7).add_edge(0, 3, 6).add_edge(1, 3, 4).add_edge(1, 4, 1).add_edge(2, 5, 2).add_edge(3, 2, 3).add_edge(3, 5, 2).add_edge(4, 3, 2).add_edge(4, 5, 1);
 	DijsktrasAlgorithm da;
 	g.DFS(0, da);
@@ -142,13 +139,13 @@ int main() {
 we get the following output:
 
 ```
-A: 0
-B: 1
-C: 7
-D: 4
-E: 2
-F: 3
-Algorithm time: 230 us
+0: 0
+1: 1
+2: 7
+3: 4
+4: 2
+5: 3
+Algorithm time: 9e-06 us
 ```
 
 ## *API For Algorithms*
@@ -158,9 +155,19 @@ Algorithm time: 230 us
 
 `size_t current_node_idx;` - *Index of a current node in traversal.*
 
-`size_t current_node_value;` - *Value of a current node in traversal.*
+`T* current_node_value_ptr;` - *Value of a current node in traversal.*
 
-`P last_edge;` - *Last edge used to arrive to the current node.*
+`int get_next() const noexcept` - *Returns next unvisited node in graph.*
+
+`std::vector<typename Graph<T,P>::Edge>& get_neighbors(size_t p_idx)` - *Returns a reference to neighbors of node with index p_idx.*
+
+`bool finished()` - *Returns whether algorithm finished it's job.*
+
+`void finish_algorithm()` - *Sets algorithm to finished.*
+
+`bool is_visited(const size_t idx)` - *Returns whether a node with given index is visited.*
+
+
 
 `vector<pair<size_t, P>> current_neighbors;` - *All of the neighbors of the current node. First item is index of the neighbor, second item is the weight of the edge.*
 
@@ -180,6 +187,9 @@ Calling these functions before `void end()` will return 0.
 ## *Currently implemented Algorithms*
 Algorithms are found in `GraphAlgorithms.h` under namespace `galgs`:
 
+*All of these algorithms can be called with additional parameter `start` *
+*If the parameter `start` is omitted, it defaults to 0. *
+
 `bool is_cyclic(Graph<T,P>& g)` - *Checks if a given graph is cyclic*
 
 `bool any_of(Graph<T,P>& g, UnaryPredicate p)` - *Checks if any of the nodes in a graph fulfils given unary predicate p*
@@ -194,4 +204,4 @@ Algorithms are found in `GraphAlgorithms.h` under namespace `galgs`:
 
 `int find_if_not(Graph<T,P>& g, UnaryPredicate p)` - *Returns index of a node that doesn't fulfil given unary predicate or returns -1 if no such node can be found*
 
-`vector<size_t> top_sort(Graph<T,P>& g)` - *Returns vector of size_t objects of a given graph in topological sort or returns empty vector if graph if cyclic*
+`vector<size_t> top_sort(Graph<T,P>& g)` - *Returns vector of size_t objects of a given graph in topological sort or returns empty vector if graph is cyclic*
