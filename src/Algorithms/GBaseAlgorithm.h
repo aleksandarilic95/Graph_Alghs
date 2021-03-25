@@ -49,7 +49,7 @@ public:
 protected:
 	size_t current_node_idx = 0;
 	T* current_node_value_ptr = nullptr;
-	P* last_edge_ptr = nullptr;
+	// P* last_edge_ptr = nullptr;
 	
 	std::vector<typename Graph<T,P>::Edge>& get_neighbors(size_t p_idx) const { return m_graph_->m_adj_matrix_[p_idx]; }
 	void finish_algorithm() noexcept { m_algorithm_finished_ = true; }	
@@ -167,8 +167,8 @@ inline std::vector<typename Graph<T,P>::Edge> GBaseAlgorithm<T, P>::util_decide_
 		decide_next(l_result_);
 
 	//Put last edge onto the stack
-	if (!l_result_.empty())
-		last_edge_ptr = l_result_.front().m_edge_value_ptr_;
+	// if (!l_result_.empty())
+	// 	last_edge_ptr = l_result_.front().m_edge_value_ptr_;
 
 	//Return temp vector (NRVO)
 	return l_result_; 

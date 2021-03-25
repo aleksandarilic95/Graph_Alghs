@@ -187,8 +187,9 @@ Calling these functions before `void end()` will return 0.
 ## *Currently implemented Algorithms*
 Algorithms are found in `GraphAlgorithms.h` under namespace `galgs`:
 
-*All of these algorithms can be called with additional parameter `start` *
-*If the parameter `start` is omitted, it defaults to 0. *
+*All of these algorithms can be called with additional parameter `start`*
+
+*If the parameter `start` is omitted, it defaults to 0.*
 
 `bool is_cyclic(Graph<T,P>& g)` - *Checks if a given graph is cyclic*
 
@@ -205,3 +206,9 @@ Algorithms are found in `GraphAlgorithms.h` under namespace `galgs`:
 `int find_if_not(Graph<T,P>& g, UnaryPredicate p)` - *Returns index of a node that doesn't fulfil given unary predicate or returns -1 if no such node can be found*
 
 `vector<size_t> top_sort(Graph<T,P>& g)` - *Returns vector of size_t objects of a given graph in topological sort or returns empty vector if graph is cyclic*
+
+# Benchmarks
+
+The next tests are done with a graph containing 174K nodes and 8M edges:
+
+###### Empty DFS Traversal: 0.206782
