@@ -217,4 +217,4 @@ The next tests are done with a graph containing 174K nodes and 8M edges:
 
 #### all_of(): 0.22s
 
-#### 
+#### find_if(): 0.23s

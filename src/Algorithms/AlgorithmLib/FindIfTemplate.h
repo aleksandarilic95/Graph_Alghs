@@ -27,8 +27,7 @@ class FindIfAlg : public GBaseAlgorithm<T, P> {
 public:
 	FindIfAlg(UnaryPredicate p_predicate) : m_p_(p_predicate) {}
 	void start() {};
-	void end() {
-		std::cout << (double)this->algorithm_time_us() / 1E6 << std::endl;};
+	void end() {};
 	void decide_next(std::vector<typename Graph<T,P>::Edge>& vec) {};
 	void current_node_do() {
 		if (m_p_(*(this->current_node_value_ptr)))
