@@ -33,8 +33,6 @@ climits
 /home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/GraphAlgorithms.h
 ../../Graph/Graph.h
 /home/elmo/GitHub repos/Graph/Graph_Alghs/src/Graph/Graph.h
-algorithm
--
 IsCyclicTemplate.h
 /home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/IsCyclicTemplate.h
 FindIfTemplate.h
@@ -49,6 +47,8 @@ vector
 -
 iostream
 -
+algorithm
+-
 
 /home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/IsCyclicTemplate.h
 ../GBaseAlgorithm.h
@@ -59,6 +59,8 @@ vector
 -
 stack
 -
+algorithm
+-
 
 /home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/AlgorithmLib/MSTTemplate.h
 
@@ -67,8 +69,6 @@ stack
 /home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/GBaseAlgorithm.h
 
 /home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/GBaseAlgorithm.h
-../Graph/Node.h
-/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Graph/Node.h
 vector
 -
 chrono
@@ -79,10 +79,12 @@ iostream
 -
 algorithm
 -
+iterator
+-
+memory
+-
 
 /home/elmo/GitHub repos/Graph/Graph_Alghs/src/Graph/Graph.h
-Node.h
-/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Graph/Node.h
 ../Algorithms/GBaseAlgorithm.h
 /home/elmo/GitHub repos/Graph/Graph_Alghs/src/Algorithms/GBaseAlgorithm.h
 vector
@@ -93,6 +95,6 @@ queue
 -
 iostream
 -
-
-/home/elmo/GitHub repos/Graph/Graph_Alghs/src/Graph/Node.h
+memory
+-
 

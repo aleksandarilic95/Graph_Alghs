@@ -10,5 +10,4 @@ CMakeFiles/Graph.dir/main.cpp.o: ../src/Algorithms/AlgorithmLib/MSTTemplate.h
 CMakeFiles/Graph.dir/main.cpp.o: ../src/Algorithms/AlgorithmLib/TopSortTemplate.h
 CMakeFiles/Graph.dir/main.cpp.o: ../src/Algorithms/GBaseAlgorithm.h
 CMakeFiles/Graph.dir/main.cpp.o: ../src/Graph/Graph.h
-CMakeFiles/Graph.dir/main.cpp.o: ../src/Graph/Node.h
 

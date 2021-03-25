@@ -5,14 +5,17 @@
 template <typename T, typename P, class UnaryPredicate>
 class AllOfAlg : public GBaseAlgorithm<T, P> {
 public:
-	AllOfAlg(Graph<T,P>& g, UnaryPredicate p) : m_p_(p), m_result_(true), GBaseAlgorithm<T,P>(g) {};
+
+	AllOfAlg(UnaryPredicate p_predicate) : m_p_(p_predicate) {}
 	void start() {};
 	void end() {
-		cout << (double)this->algorithm_time_us() / 1E6 << endl;};
-	void decide_next(vector<pair<size_t, P>>& vec) {};
+		std::cout << (double)this->algorithm_time_us() / 1E6 << std::endl;};
+	void decide_next(std::vector<typename Graph<T,P>::Edge>& vec) {};
 	void current_node_do() {
-		if (!m_p_(this->current_node_value.getValue()))
+		if (!m_p_(*(this->current_node_value_ptr))) {
 			m_result_ = false;
+			this->finish_algorithm();
+		}
 	};
 	constexpr int get_result() const noexcept {
 		return m_result_;
@@ -26,13 +29,14 @@ private:
 template <typename T, typename P, class UnaryPredicate>
 class AnyOfAlg : public GBaseAlgorithm<T, P> {
 public:
-	AnyOfAlg(Graph<T,P>& g, UnaryPredicate p) : m_p_(p), m_result_(true), GBaseAlgorithm<T,P>(g) {};
+
+	AnyOfAlg(UnaryPredicate p_predicate) : m_p_(p_predicate) {}
 	void start() {};
 	void end() {
-		cout << (double)this->algorithm_time_us() / 1E6 << endl;};
-	void decide_next(vector<pair<size_t, P>>& vec) {};
+		std::cout << (double)this->algorithm_time_us() / 1E6 << std::endl;};
+	void decide_next(std::vector<typename Graph<T,P>::Edge>& vec) {};
 	void current_node_do() {
-		if (m_p_(this->current_node_value.getValue()))
+		if (m_p_(*(this->current_node_value_ptr)))
 			m_result_ = true;
 	};
 	constexpr int get_result() const noexcept {
@@ -47,20 +51,25 @@ private:
 template <typename T, typename P, class UnaryPredicate>
 class NoneOfAlg : public GBaseAlgorithm<T, P> {
 public:
-	NoneOfAlg(Graph<T,P>& g, UnaryPredicate p) : m_p_(p), m_result_(true), GBaseAlgorithm<T,P>(g) {};
+	NoneOfAlg(UnaryPredicate p_predicate) : m_p_(p_predicate) {}
 	void start() {};
 	void end() {
-		cout << (double)this->algorithm_time_us() / 1E6 << endl;};
-	void decide_next(vector<pair<size_t, P>>& vec) {};
+		std::cout << debug_count << std::endl;
+		std::cout << (double)this->algorithm_time_us() / 1E6 << std::endl;};
+	void decide_next(std::vector<typename Graph<T,P>::Edge>& vec) {};
 	void current_node_do() {
-		if (m_p_(this->current_node_value.getValue()))
+		if (m_p_(*(this->current_node_value_ptr))) {
 			m_result_ = false;
-	};
+			this->finish_algorithm();
+		}
+		debug_count++;
+	}
 	constexpr int get_result() const noexcept {
 		return m_result_;
 	}
 private:
 	bool m_result_;
 	UnaryPredicate m_p_;
+	size_t debug_count = 0;
 
 };

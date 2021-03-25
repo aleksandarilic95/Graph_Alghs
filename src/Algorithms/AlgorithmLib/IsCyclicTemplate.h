@@ -4,28 +4,36 @@
 #include <iostream>
 #include <vector>
 #include <stack>
+#include <algorithm>
 
 template <typename T, typename P>
 class IsCyclicAlg : public GBaseAlgorithm<T, P> {
 public:
-	IsCyclicAlg<T,P>(Graph<T,P>& g) : GBaseAlgorithm<T,P>(g) {}
+
+	~IsCyclicAlg() {
+		delete[] m_on_stack_;
+	}
 
 	void start() {
-		m_on_stack_.assign(this->graph_size(), false);
+		m_on_stack_ = new bool[this->graph_size()]();
 	};
 
 	void end() {
-		cout << (double)this->algorithm_time_us() / 1E6 << endl;
+		std::cout << debug_count << std::endl;
+		std::cout << (double)this->algorithm_time_us() / 1E6 << std::endl;
 	};
 
-	void decide_next(vector<pair<size_t, P>>& vec) {
+	void decide_next(std::vector<typename Graph<T,P>::Edge>& vec) {
 	};
 
 	void current_node_do() {
 		m_on_stack_[this->current_node_idx] = true;
 		for(auto&& i : this->get_neighbors(this->current_node_idx))
-			if(m_on_stack_[i.first])
+			if(m_on_stack_[i.m_edge_next_]) {
 				result = true;
+				this->finish_algorithm();
+			}
+		debug_count++;
 	};
 
 	void callback() {
@@ -38,5 +46,6 @@ public:
 	
 private:
 	bool result = false;
-	std::vector<bool> m_on_stack_;	
+	bool* m_on_stack_ = 0;
+	size_t debug_count = 0;	
 };
