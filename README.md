@@ -45,7 +45,7 @@ Additionally, `add_node()` and `add_edge()` can be appended to one another:
 
 ## *Graph traversal*
 
-Graph can be traversed using `void DFS(size_t start, GBaseAlgorithm<T,P>& algorithm);` or `void BFS(size_t start, GBaseAlgorithm<T,P>& algorithm);` where *algorithm* is an object of a user class that inherits from 'GBaseAlgorithm'.
+Graph can be traversed using `void DFS(size_t start, GBaseAlgorithm<T,P>& algorithm);` or `void BFS(size_t start, GBaseAlgorithm<T,P>& algorithm);` (BFS not working currently) where *algorithm* is an object of a user class that inherits from 'GBaseAlgorithm'.
 
 ```cpp
   DijkstrasAlgorithm da; //Instance of a class DijsktrasAlgorithm that inherits from GBaseAlgorithm.
