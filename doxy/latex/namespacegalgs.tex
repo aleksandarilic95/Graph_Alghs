@@ -1,0 +1,89 @@
+\hypertarget{namespacegalgs}{}\doxysection{galgs Namespace Reference}
+\label{namespacegalgs}\index{galgs@{galgs}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , typename P $>$ }\\constexpr bool \mbox{\hyperlink{namespacegalgs_ae6b4b7e41603a5b1c76add1780a80c5b}{is\+\_\+cyclic}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P $>$ }\\constexpr int \mbox{\hyperlink{namespacegalgs_a3f8f4205eb84e23671ceed7adfc83c36}{find}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, T value, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P , class Unary\+Predicate $>$ }\\constexpr int \mbox{\hyperlink{namespacegalgs_ab6afd6a3052c6df8941ee72355861e59}{find\+\_\+if}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, Unary\+Predicate p, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P , class Unary\+Predicate $>$ }\\constexpr int \mbox{\hyperlink{namespacegalgs_a0758c17ef5f358d8c9c9253383d7f78a}{find\+\_\+if\+\_\+not}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, Unary\+Predicate p, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P , class Unary\+Predicate $>$ }\\constexpr bool \mbox{\hyperlink{namespacegalgs_ad21f8de0894307d1b1d1c9cead42691d}{all\+\_\+of}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, Unary\+Predicate p, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P , class Unary\+Predicate $>$ }\\constexpr bool \mbox{\hyperlink{namespacegalgs_a50e9d2160bdaba679c3f8a7c6070895f}{any\+\_\+of}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, Unary\+Predicate p, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P , class Unary\+Predicate $>$ }\\constexpr bool \mbox{\hyperlink{namespacegalgs_aa0ea06fed662e20c7cb6b1c6c5fde797}{none\+\_\+of}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, Unary\+Predicate p, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P $>$ }\\std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{namespacegalgs_aeec9abf2717b2e68323bec5661bc1f93}{top\+\_\+sort}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P $>$ }\\\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \mbox{\hyperlink{namespacegalgs_a3f0c36f6c818f4d0441277e028410aaa}{mst}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacegalgs_ad21f8de0894307d1b1d1c9cead42691d}\label{namespacegalgs_ad21f8de0894307d1b1d1c9cead42691d}} 
+\index{galgs@{galgs}!all\_of@{all\_of}}
+\index{all\_of@{all\_of}!galgs@{galgs}}
+\doxysubsubsection{\texorpdfstring{all\_of()}{all\_of()}}
+{\footnotesize\ttfamily template$<$typename T , typename P , class Unary\+Predicate $>$ \\
+constexpr bool galgs\+::all\+\_\+of (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&}]{g,  }\item[{Unary\+Predicate}]{p,  }\item[{size\+\_\+t}]{start = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacegalgs_a50e9d2160bdaba679c3f8a7c6070895f}\label{namespacegalgs_a50e9d2160bdaba679c3f8a7c6070895f}} 
+\index{galgs@{galgs}!any\_of@{any\_of}}
+\index{any\_of@{any\_of}!galgs@{galgs}}
+\doxysubsubsection{\texorpdfstring{any\_of()}{any\_of()}}
+{\footnotesize\ttfamily template$<$typename T , typename P , class Unary\+Predicate $>$ \\
+constexpr bool galgs\+::any\+\_\+of (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&}]{g,  }\item[{Unary\+Predicate}]{p,  }\item[{size\+\_\+t}]{start = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacegalgs_a3f8f4205eb84e23671ceed7adfc83c36}\label{namespacegalgs_a3f8f4205eb84e23671ceed7adfc83c36}} 
+\index{galgs@{galgs}!find@{find}}
+\index{find@{find}!galgs@{galgs}}
+\doxysubsubsection{\texorpdfstring{find()}{find()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+constexpr int galgs\+::find (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&}]{g,  }\item[{T}]{value,  }\item[{size\+\_\+t}]{start = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacegalgs_ab6afd6a3052c6df8941ee72355861e59}\label{namespacegalgs_ab6afd6a3052c6df8941ee72355861e59}} 
+\index{galgs@{galgs}!find\_if@{find\_if}}
+\index{find\_if@{find\_if}!galgs@{galgs}}
+\doxysubsubsection{\texorpdfstring{find\_if()}{find\_if()}}
+{\footnotesize\ttfamily template$<$typename T , typename P , class Unary\+Predicate $>$ \\
+constexpr int galgs\+::find\+\_\+if (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&}]{g,  }\item[{Unary\+Predicate}]{p,  }\item[{size\+\_\+t}]{start = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacegalgs_a0758c17ef5f358d8c9c9253383d7f78a}\label{namespacegalgs_a0758c17ef5f358d8c9c9253383d7f78a}} 
+\index{galgs@{galgs}!find\_if\_not@{find\_if\_not}}
+\index{find\_if\_not@{find\_if\_not}!galgs@{galgs}}
+\doxysubsubsection{\texorpdfstring{find\_if\_not()}{find\_if\_not()}}
+{\footnotesize\ttfamily template$<$typename T , typename P , class Unary\+Predicate $>$ \\
+constexpr int galgs\+::find\+\_\+if\+\_\+not (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&}]{g,  }\item[{Unary\+Predicate}]{p,  }\item[{size\+\_\+t}]{start = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacegalgs_ae6b4b7e41603a5b1c76add1780a80c5b}\label{namespacegalgs_ae6b4b7e41603a5b1c76add1780a80c5b}} 
+\index{galgs@{galgs}!is\_cyclic@{is\_cyclic}}
+\index{is\_cyclic@{is\_cyclic}!galgs@{galgs}}
+\doxysubsubsection{\texorpdfstring{is\_cyclic()}{is\_cyclic()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+constexpr bool galgs\+::is\+\_\+cyclic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&}]{g,  }\item[{size\+\_\+t}]{start = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacegalgs_a3f0c36f6c818f4d0441277e028410aaa}\label{namespacegalgs_a3f0c36f6c818f4d0441277e028410aaa}} 
+\index{galgs@{galgs}!mst@{mst}}
+\index{mst@{mst}!galgs@{galgs}}
+\doxysubsubsection{\texorpdfstring{mst()}{mst()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+\mbox{\hyperlink{classGraph}{Graph}}$<$T, P$>$ galgs\+::mst (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&}]{g }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacegalgs_aa0ea06fed662e20c7cb6b1c6c5fde797}\label{namespacegalgs_aa0ea06fed662e20c7cb6b1c6c5fde797}} 
+\index{galgs@{galgs}!none\_of@{none\_of}}
+\index{none\_of@{none\_of}!galgs@{galgs}}
+\doxysubsubsection{\texorpdfstring{none\_of()}{none\_of()}}
+{\footnotesize\ttfamily template$<$typename T , typename P , class Unary\+Predicate $>$ \\
+constexpr bool galgs\+::none\+\_\+of (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&}]{g,  }\item[{Unary\+Predicate}]{p,  }\item[{size\+\_\+t}]{start = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacegalgs_aeec9abf2717b2e68323bec5661bc1f93}\label{namespacegalgs_aeec9abf2717b2e68323bec5661bc1f93}} 
+\index{galgs@{galgs}!top\_sort@{top\_sort}}
+\index{top\_sort@{top\_sort}!galgs@{galgs}}
+\doxysubsubsection{\texorpdfstring{top\_sort()}{top\_sort()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+std\+::vector$<$size\+\_\+t$>$ galgs\+::top\+\_\+sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&}]{g,  }\item[{size\+\_\+t}]{start = {\ttfamily 0} }\end{DoxyParamCaption})}
+

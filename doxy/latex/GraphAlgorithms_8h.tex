@@ -1,0 +1,37 @@
+\hypertarget{GraphAlgorithms_8h}{}\doxysection{src/\+Algorithms/\+Algorithm\+Lib/\+Graph\+Algorithms.h File Reference}
+\label{GraphAlgorithms_8h}\index{src/Algorithms/AlgorithmLib/GraphAlgorithms.h@{src/Algorithms/AlgorithmLib/GraphAlgorithms.h}}
+{\ttfamily \#include \char`\"{}../../\+Graph/\+Graph.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Is\+Cyclic\+Template.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Find\+If\+Template.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}All\+Of\+Template.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Top\+Sort\+Template.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}MSTTemplate.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacegalgs}{galgs}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , typename P $>$ }\\constexpr bool \mbox{\hyperlink{namespacegalgs_ae6b4b7e41603a5b1c76add1780a80c5b}{galgs\+::is\+\_\+cyclic}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P $>$ }\\constexpr int \mbox{\hyperlink{namespacegalgs_a3f8f4205eb84e23671ceed7adfc83c36}{galgs\+::find}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, T value, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P , class Unary\+Predicate $>$ }\\constexpr int \mbox{\hyperlink{namespacegalgs_ab6afd6a3052c6df8941ee72355861e59}{galgs\+::find\+\_\+if}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, Unary\+Predicate p, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P , class Unary\+Predicate $>$ }\\constexpr int \mbox{\hyperlink{namespacegalgs_a0758c17ef5f358d8c9c9253383d7f78a}{galgs\+::find\+\_\+if\+\_\+not}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, Unary\+Predicate p, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P , class Unary\+Predicate $>$ }\\constexpr bool \mbox{\hyperlink{namespacegalgs_ad21f8de0894307d1b1d1c9cead42691d}{galgs\+::all\+\_\+of}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, Unary\+Predicate p, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P , class Unary\+Predicate $>$ }\\constexpr bool \mbox{\hyperlink{namespacegalgs_a50e9d2160bdaba679c3f8a7c6070895f}{galgs\+::any\+\_\+of}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, Unary\+Predicate p, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P , class Unary\+Predicate $>$ }\\constexpr bool \mbox{\hyperlink{namespacegalgs_aa0ea06fed662e20c7cb6b1c6c5fde797}{galgs\+::none\+\_\+of}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, Unary\+Predicate p, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P $>$ }\\std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{namespacegalgs_aeec9abf2717b2e68323bec5661bc1f93}{galgs\+::top\+\_\+sort}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g, size\+\_\+t start=0)
+\item 
+{\footnotesize template$<$typename T , typename P $>$ }\\\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \mbox{\hyperlink{namespacegalgs_a3f0c36f6c818f4d0441277e028410aaa}{galgs\+::mst}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&g)
+\end{DoxyCompactItemize}

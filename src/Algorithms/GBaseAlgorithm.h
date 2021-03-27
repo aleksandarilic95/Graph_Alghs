@@ -157,9 +157,9 @@ inline std::vector<typename Graph<T,P>::Edge> GBaseAlgorithm<T, P>::util_decide_
 	
 	//Loop through the neighbor nodes and put unvisited (or ones that aren't yet planned to be visited) into the temp vector
 	for(auto&& l_edge_ : m_graph_->m_adj_matrix_[current_node_idx])
-		if (!m_nodes_on_stack_[l_edge_.m_edge_next_]) {
+		if (!m_nodes_on_stack_[l_edge_.edge_next]) {
 			l_result_.push_back(l_edge_);
-			m_nodes_on_stack_[l_edge_.m_edge_next_] = true;
+			m_nodes_on_stack_[l_edge_.edge_next] = true;
 		}
 
 	//If flag is 1, allow modification of temp vector

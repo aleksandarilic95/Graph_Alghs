@@ -1,0 +1,94 @@
+\hypertarget{classTopSortAlg}{}\doxysection{Top\+Sort\+Alg$<$ T, P $>$ Class Template Reference}
+\label{classTopSortAlg}\index{TopSortAlg$<$ T, P $>$@{TopSortAlg$<$ T, P $>$}}
+
+
+{\ttfamily \#include $<$Top\+Sort\+Template.\+h$>$}
+
+Inheritance diagram for Top\+Sort\+Alg$<$ T, P $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{classTopSortAlg}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classTopSortAlg_ab0aa8824309bce5738819e73d7d733f0}{start}} ()
+\item 
+void \mbox{\hyperlink{classTopSortAlg_a88f5f325bbffe408cee0692242e81457}{end}} ()
+\item 
+void \mbox{\hyperlink{classTopSortAlg_a374e06381ad5bc109d237c813188b3a0}{decide\+\_\+next}} (std\+::vector$<$ typename \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::Edge $>$ \&vec)
+\item 
+void \mbox{\hyperlink{classTopSortAlg_a5f3c878c4feda85299561aade41aea5a}{current\+\_\+node\+\_\+do}} ()
+\item 
+void \mbox{\hyperlink{classTopSortAlg_a5407f5300ea3d4c8913e4382a1134b73}{callback}} ()
+\item 
+constexpr std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{classTopSortAlg_a576918bb3d62464cca484fe929cfb43e}{get\+\_\+result}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTopSortAlg_a5407f5300ea3d4c8913e4382a1134b73}\label{classTopSortAlg_a5407f5300ea3d4c8913e4382a1134b73}} 
+\index{TopSortAlg$<$ T, P $>$@{TopSortAlg$<$ T, P $>$}!callback@{callback}}
+\index{callback@{callback}!TopSortAlg$<$ T, P $>$@{TopSortAlg$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{callback()}{callback()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+void \mbox{\hyperlink{classTopSortAlg}{Top\+Sort\+Alg}}$<$ T, P $>$\+::callback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classGBaseAlgorithm_a2fc86bf5fe72b56943fcfd3c876b6d29}{GBase\+Algorithm$<$ T, P $>$}}.
+
+\mbox{\Hypertarget{classTopSortAlg_a5f3c878c4feda85299561aade41aea5a}\label{classTopSortAlg_a5f3c878c4feda85299561aade41aea5a}} 
+\index{TopSortAlg$<$ T, P $>$@{TopSortAlg$<$ T, P $>$}!current\_node\_do@{current\_node\_do}}
+\index{current\_node\_do@{current\_node\_do}!TopSortAlg$<$ T, P $>$@{TopSortAlg$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{current\_node\_do()}{current\_node\_do()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+void \mbox{\hyperlink{classTopSortAlg}{Top\+Sort\+Alg}}$<$ T, P $>$\+::current\+\_\+node\+\_\+do (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classGBaseAlgorithm_a92b22aedb83b198d244765990903c48d}{GBase\+Algorithm$<$ T, P $>$}}.
+
+\mbox{\Hypertarget{classTopSortAlg_a374e06381ad5bc109d237c813188b3a0}\label{classTopSortAlg_a374e06381ad5bc109d237c813188b3a0}} 
+\index{TopSortAlg$<$ T, P $>$@{TopSortAlg$<$ T, P $>$}!decide\_next@{decide\_next}}
+\index{decide\_next@{decide\_next}!TopSortAlg$<$ T, P $>$@{TopSortAlg$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{decide\_next()}{decide\_next()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+void \mbox{\hyperlink{classTopSortAlg}{Top\+Sort\+Alg}}$<$ T, P $>$\+::decide\+\_\+next (\begin{DoxyParamCaption}\item[{std\+::vector$<$ typename \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::Edge $>$ \&}]{vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classTopSortAlg_a88f5f325bbffe408cee0692242e81457}\label{classTopSortAlg_a88f5f325bbffe408cee0692242e81457}} 
+\index{TopSortAlg$<$ T, P $>$@{TopSortAlg$<$ T, P $>$}!end@{end}}
+\index{end@{end}!TopSortAlg$<$ T, P $>$@{TopSortAlg$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+void \mbox{\hyperlink{classTopSortAlg}{Top\+Sort\+Alg}}$<$ T, P $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classGBaseAlgorithm_a8ad4d0bcd86d665fbd72c1efadaf5580}{GBase\+Algorithm$<$ T, P $>$}}.
+
+\mbox{\Hypertarget{classTopSortAlg_a576918bb3d62464cca484fe929cfb43e}\label{classTopSortAlg_a576918bb3d62464cca484fe929cfb43e}} 
+\index{TopSortAlg$<$ T, P $>$@{TopSortAlg$<$ T, P $>$}!get\_result@{get\_result}}
+\index{get\_result@{get\_result}!TopSortAlg$<$ T, P $>$@{TopSortAlg$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{get\_result()}{get\_result()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+constexpr std\+::vector$<$size\+\_\+t$>$ \mbox{\hyperlink{classTopSortAlg}{Top\+Sort\+Alg}}$<$ T, P $>$\+::get\+\_\+result (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{classTopSortAlg_ab0aa8824309bce5738819e73d7d733f0}\label{classTopSortAlg_ab0aa8824309bce5738819e73d7d733f0}} 
+\index{TopSortAlg$<$ T, P $>$@{TopSortAlg$<$ T, P $>$}!start@{start}}
+\index{start@{start}!TopSortAlg$<$ T, P $>$@{TopSortAlg$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+void \mbox{\hyperlink{classTopSortAlg}{Top\+Sort\+Alg}}$<$ T, P $>$\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classGBaseAlgorithm_a392b30faf1ea2635881bbbe4e33db993}{GBase\+Algorithm$<$ T, P $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Algorithms/\+Algorithm\+Lib/\mbox{\hyperlink{TopSortTemplate_8h}{Top\+Sort\+Template.\+h}}\end{DoxyCompactItemize}

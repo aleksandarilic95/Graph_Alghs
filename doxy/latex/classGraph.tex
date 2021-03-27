@@ -1,0 +1,329 @@
+\hypertarget{classGraph}{}\doxysection{Graph$<$ T, P $>$ Class Template Reference}
+\label{classGraph}\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+
+
+\mbox{\hyperlink{classGraph}{Graph}} Structure class with templated parameters.~\newline
+ ~\newline
+ T -\/ primitive or structure/class representing a node in the graph.~\newline
+ P -\/ primitive or structure/class representing an edge in the graph.  
+
+
+
+
+{\ttfamily \#include $<$Graph.\+h$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structGraph_1_1Edge}{Edge}}
+\item 
+struct \mbox{\hyperlink{structGraph_1_1Node}{Node}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structGraph_1_1Node}{Node}} \mbox{\hyperlink{classGraph_a4d76e8b2f3d6587e03f593665a5e6478}{Node}}
+\item 
+typedef struct \mbox{\hyperlink{structGraph_1_1Edge}{Edge}} \mbox{\hyperlink{classGraph_a13f2785d8ebffb2a6f317cfeb7aa82c7}{Edge}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGraph_a2abf4c7e94b6d9cb0a49b99d18243725}{Graph}} ()
+\item 
+\mbox{\hyperlink{classGraph_a2e962121f5bded2d8144528b2578c210}{Graph}} (std\+::initializer\+\_\+list$<$ T $>$ nodes)
+\item 
+constexpr \mbox{\hyperlink{classGraph_acc50174356696b729144d3628bbddb0f}{Graph}} (const \mbox{\hyperlink{classGraph}{Graph}} \&g)=default
+\item 
+constexpr \mbox{\hyperlink{classGraph}{Graph}} \& \mbox{\hyperlink{classGraph_aa5f5c78b34a372cb5a88415bca38ce00}{operator=}} (const \mbox{\hyperlink{classGraph}{Graph}} \&rhs)=default
+\item 
+\mbox{\hyperlink{classGraph_af91408844575b628535452563927f07e}{Graph}} (\mbox{\hyperlink{classGraph}{Graph}} \&\&g) noexcept=default
+\item 
+\mbox{\hyperlink{classGraph}{Graph}} \& \mbox{\hyperlink{classGraph_ae7b1617e00e996823e083e9e5b043360}{operator=}} (\mbox{\hyperlink{classGraph}{Graph}} \&\&rhs) noexcept=default
+\item 
+\mbox{\hyperlink{classGraph_a352513aa643d9a95dd8b8748b12252c8}{$\sim$\+Graph}} ()=default
+\item 
+\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \& \mbox{\hyperlink{classGraph_a9f3ecdf67f3b75f38f989d2598444483}{add\+\_\+node}} (T p\+\_\+node) noexcept
+\item 
+\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \& \mbox{\hyperlink{classGraph_a1b4d7a9409a5365ef81b5d62fcf694d6}{add\+\_\+node}} (std\+::initializer\+\_\+list$<$ T $>$ p\+\_\+nodes) noexcept
+\item 
+\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \& \mbox{\hyperlink{classGraph_a1530e4f68fba6f39b0488da6865cb170}{add\+\_\+edge}} (size\+\_\+t first, size\+\_\+t second, P connection)
+\item 
+int \mbox{\hyperlink{classGraph_a05fc1fa009c756342d6f4421599998f8}{get\+\_\+node\+\_\+idx}} (T p\+\_\+value) const noexcept
+\item 
+T \mbox{\hyperlink{classGraph_a7cfcb5ab105aec79e16f0090bbfba751}{get\+\_\+node\+\_\+value}} (size\+\_\+t p\+\_\+idx) const
+\item 
+void \mbox{\hyperlink{classGraph_ab012da9fc74112519bd99727b47fc8e0}{DFS}} (size\+\_\+t p\+\_\+start, \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$ \&p\+\_\+algorithm)
+\item 
+void \mbox{\hyperlink{classGraph_a18416a7706c02b72c435e38c5a410628}{BFS}} (size\+\_\+t p\+\_\+start, \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$ \&p\+\_\+algorithm)
+\item 
+size\+\_\+t \mbox{\hyperlink{classGraph_a94b2da24fb0b0e4c41f6166267ada1fd}{size}} () const noexcept
+\item 
+void \mbox{\hyperlink{classGraph_ae75b3912756218283d71a6d01e8a0f2f}{reserve\+\_\+nodes}} (size\+\_\+t p\+\_\+idx)
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classGraph_af63ac1cde6e744bc63bb48c3de454465}{GBase\+Algorithm$<$ T, P $>$}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename P$>$\newline
+class Graph$<$ T, P $>$}
+
+\mbox{\hyperlink{classGraph}{Graph}} Structure class with templated parameters.~\newline
+ ~\newline
+ T -\/ primitive or structure/class representing a node in the graph.~\newline
+ P -\/ primitive or structure/class representing an edge in the graph. 
+
+\begin{DoxyAuthor}{Author}
+Aleksandar Ilic 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+March 2021. 
+\end{DoxyDate}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classGraph_a13f2785d8ebffb2a6f317cfeb7aa82c7}\label{classGraph_a13f2785d8ebffb2a6f317cfeb7aa82c7}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!Edge@{Edge}}
+\index{Edge@{Edge}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{Edge}{Edge}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+typedef struct \mbox{\hyperlink{structGraph_1_1Edge}{Edge}} \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::\mbox{\hyperlink{structGraph_1_1Edge}{Edge}}}
+
+\mbox{\Hypertarget{classGraph_a4d76e8b2f3d6587e03f593665a5e6478}\label{classGraph_a4d76e8b2f3d6587e03f593665a5e6478}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!Node@{Node}}
+\index{Node@{Node}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{Node}{Node}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+typedef struct \mbox{\hyperlink{structGraph_1_1Node}{Node}} \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::\mbox{\hyperlink{structGraph_1_1Node}{Node}}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGraph_a2abf4c7e94b6d9cb0a49b99d18243725}\label{classGraph_a2abf4c7e94b6d9cb0a49b99d18243725}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::\mbox{\hyperlink{classGraph}{Graph}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Default constructor \mbox{\Hypertarget{classGraph_a2e962121f5bded2d8144528b2578c210}\label{classGraph_a2e962121f5bded2d8144528b2578c210}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::\mbox{\hyperlink{classGraph}{Graph}} (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ T $>$}]{p\+\_\+nodes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+Constructor taking initializer list as param 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+nodes} & -\/ initializer list of values to be added to the graph \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGraph_acc50174356696b729144d3628bbddb0f}\label{classGraph_acc50174356696b729144d3628bbddb0f}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+constexpr \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::\mbox{\hyperlink{classGraph}{Graph}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}, {\ttfamily [default]}}
+
+Default copy constructor \mbox{\Hypertarget{classGraph_af91408844575b628535452563927f07e}\label{classGraph_af91408844575b628535452563927f07e}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::\mbox{\hyperlink{classGraph}{Graph}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&\&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+Default move constructor \mbox{\Hypertarget{classGraph_a352513aa643d9a95dd8b8748b12252c8}\label{classGraph_a352513aa643d9a95dd8b8748b12252c8}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!````~Graph@{$\sim$Graph}}
+\index{````~Graph@{$\sim$Graph}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$Graph()}{~Graph()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::$\sim$\mbox{\hyperlink{classGraph}{Graph}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Default destructor 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGraph_a1530e4f68fba6f39b0488da6865cb170}\label{classGraph_a1530e4f68fba6f39b0488da6865cb170}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!add\_edge@{add\_edge}}
+\index{add\_edge@{add\_edge}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{add\_edge()}{add\_edge()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \& \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::add\+\_\+edge (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{p\+\_\+first,  }\item[{size\+\_\+t}]{p\+\_\+second,  }\item[{P}]{p\+\_\+connection }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Adds edge with the value P to the graph 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+first} & -\/ index of the first node of the edge \\
+\hline
+{\em p\+\_\+second} & -\/ index of the second node of the edge \\
+\hline
+{\em p\+\_\+connection} & -\/ value of the edge \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+reference to the graph 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a1b4d7a9409a5365ef81b5d62fcf694d6}\label{classGraph_a1b4d7a9409a5365ef81b5d62fcf694d6}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!add\_node@{add\_node}}
+\index{add\_node@{add\_node}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{add\_node()}{add\_node()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \& \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::add\+\_\+node (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ T $>$}]{p\+\_\+nodes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Add nodes with the values given in the list to the graph
+
+Add nodes with the values given in the list to the graph 
+\begin{DoxyParams}{Parameters}
+{\em nodes} & -\/ initializer list of values to be added to the graph \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+reference to the graph 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a9f3ecdf67f3b75f38f989d2598444483}\label{classGraph_a9f3ecdf67f3b75f38f989d2598444483}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!add\_node@{add\_node}}
+\index{add\_node@{add\_node}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{add\_node()}{add\_node()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \& \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::add\+\_\+node (\begin{DoxyParamCaption}\item[{T}]{p\+\_\+node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Add node with the value T to the graph 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+node} & -\/ Value to be added to the graph \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+reference to the graph 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a18416a7706c02b72c435e38c5a410628}\label{classGraph_a18416a7706c02b72c435e38c5a410628}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!BFS@{BFS}}
+\index{BFS@{BFS}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{BFS()}{BFS()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+void \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::BFS (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{p\+\_\+start,  }\item[{\mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$ \&}]{p\+\_\+algorithm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Traverses the graph from the start node given, with an algorithm given 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+start} & -\/ index of the node from which to start the traversal \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & if given index is out of range \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+algorithm} & -\/ algorithm to be used in the traversal \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGraph_ab012da9fc74112519bd99727b47fc8e0}\label{classGraph_ab012da9fc74112519bd99727b47fc8e0}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!DFS@{DFS}}
+\index{DFS@{DFS}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{DFS()}{DFS()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+void \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::DFS (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{p\+\_\+start,  }\item[{\mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$ \&}]{p\+\_\+algorithm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Traverses the graph from the start node given, with an algorithm given 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+start} & -\/ index of the node from which to start the traversal \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & if given index is out of range \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+algorithm} & -\/ algorithm to be used in the traversal \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGraph_a05fc1fa009c756342d6f4421599998f8}\label{classGraph_a05fc1fa009c756342d6f4421599998f8}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!get\_node\_idx@{get\_node\_idx}}
+\index{get\_node\_idx@{get\_node\_idx}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{get\_node\_idx()}{get\_node\_idx()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+int \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::get\+\_\+node\+\_\+idx (\begin{DoxyParamCaption}\item[{T}]{p\+\_\+value }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Finds an index of the node with given value 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+value} & -\/ value to be searched for in graph \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+index of the node with the given value or -\/1 if no such node is found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a7cfcb5ab105aec79e16f0090bbfba751}\label{classGraph_a7cfcb5ab105aec79e16f0090bbfba751}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!get\_node\_value@{get\_node\_value}}
+\index{get\_node\_value@{get\_node\_value}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{get\_node\_value()}{get\_node\_value()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+T \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::get\+\_\+node\+\_\+value (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{p\+\_\+idx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Finds a value of the node with given index 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+idx} & -\/ index of the which value is to be returned \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & if given index is out of range \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+value of the node with the given index 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_aa5f5c78b34a372cb5a88415bca38ce00}\label{classGraph_aa5f5c78b34a372cb5a88415bca38ce00}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+constexpr \mbox{\hyperlink{classGraph}{Graph}}\& \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}, {\ttfamily [default]}}
+
+Default copy assignment operator \mbox{\Hypertarget{classGraph_ae7b1617e00e996823e083e9e5b043360}\label{classGraph_ae7b1617e00e996823e083e9e5b043360}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+\mbox{\hyperlink{classGraph}{Graph}}\& \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$ \&\&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+Default move assignment operator \mbox{\Hypertarget{classGraph_ae75b3912756218283d71a6d01e8a0f2f}\label{classGraph_ae75b3912756218283d71a6d01e8a0f2f}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!reserve\_nodes@{reserve\_nodes}}
+\index{reserve\_nodes@{reserve\_nodes}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{reserve\_nodes()}{reserve\_nodes()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+void \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::reserve\+\_\+nodes (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{p\+\_\+idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Reserves given number of nodes 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+idx} & -\/ number of nodes to reserve \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGraph_a94b2da24fb0b0e4c41f6166267ada1fd}\label{classGraph_a94b2da24fb0b0e4c41f6166267ada1fd}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!size@{size}}
+\index{size@{size}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+size\+\_\+t \mbox{\hyperlink{classGraph}{Graph}}$<$ T, P $>$\+::size\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Returns the size of the graph \begin{DoxyReturn}{Returns}
+size of the graph 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classGraph_af63ac1cde6e744bc63bb48c3de454465}\label{classGraph_af63ac1cde6e744bc63bb48c3de454465}} 
+\index{Graph$<$ T, P $>$@{Graph$<$ T, P $>$}!GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}}
+\index{GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}!Graph$<$ T, P $>$@{Graph$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{GBaseAlgorithm$<$ T, P $>$}{GBaseAlgorithm< T, P >}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+friend class \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Graph/\mbox{\hyperlink{Graph_8h}{Graph.\+h}}\end{DoxyCompactItemize}
