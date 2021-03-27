@@ -5,8 +5,8 @@
 #include <vector>
 #include <stack>
 #include <queue>
-#include <iostream>
-#include <memory>
+#include <algorithm>
+#include <stdexcept>
 
 /**/
 template <typename T, typename P>
@@ -51,7 +51,7 @@ public:
 		~Edge() {
 			delete m_edge_value_ptr_;
 		}
-		
+
 		size_t m_edge_next_;
 		P* m_edge_value_ptr_;
 	} Edge;
@@ -80,8 +80,8 @@ public:
 
 	Graph<T, P>& add_edge(size_t first, size_t second, P connection);
 
-	int get_node(T node) const noexcept;
-	T get_node_value(size_t node_idx) const;
+	int get_node_idx(T p_node_value) const noexcept;
+	T get_node_value(size_t p_node_idx) const;
 
 
 	void DFS(size_t start, GBaseAlgorithm<T, P>& algorithm);
@@ -102,10 +102,10 @@ private:
 };
 
 template<typename T, typename P>
-inline Graph<T, P>::Graph(std::initializer_list<T> nodes)
+inline Graph<T, P>::Graph(std::initializer_list<T> p_nodes)
 {
-	for (auto&& node : nodes) {
-		m_nodes_.push_back(Node(m_graph_size_++, node));
+	for (auto&& l_node : p_nodes) {
+		m_nodes_.push_back(Node(m_graph_size_++, l_node));
 		m_adj_matrix_.push_back({});
 	}
 }
@@ -136,25 +136,33 @@ inline Graph<T,P>& Graph<T, P>::add_edge(size_t first, size_t second, P connecti
 }
 
 template<typename T, typename P>
-inline int Graph<T, P>::get_node(T node) const noexcept
+inline int Graph<T, P>::get_node_idx(T p_node_value) const noexcept
 {
-	for (auto&& nodeIter : m_nodes_)
-		if (*nodeIter.first == node)
-			return nodeIter.second;
-	return -1;
+	auto&& l_node_it = std::find_if(m_nodes_.begin(), m_nodes_.end(), [=](const Node& rhs) {return *rhs.m_node_value_ptr_ == p_node_value; });
+	if(l_node_it == m_nodes_.end())
+		return -1;
+	else
+		return std::distance(m_nodes_.begin(), l_node_it);
 }
 
 template<typename T, typename P>
-inline void Graph<T, P>::DFS(size_t start, GBaseAlgorithm<T, P>& algorithm)
+inline T Graph<T,P>::get_node_value(size_t p_node_idx) const
+{
+	if(p_node_idx >= m_graph_size_)
+		throw std::out_of_range("Given index is out of range");
+	return *m_nodes_[p_node_idx].m_node_value_ptr_;
+}
+
+template<typename T, typename P>
+inline void Graph<T, P>::DFS(size_t p_start, GBaseAlgorithm<T, P>& p_algorithm)
 {
 	if (!size())
 		return;
-	algorithm.util_start(size(), start, this);
-	int next;
-	DFS_util(start, algorithm);
-	while(!algorithm.finished() && (next = algorithm.get_next())!= -1)
-		DFS_util(next, algorithm);
-	algorithm.util_end();
+	if(p_start >= m_graph_size_)
+		throw std::out_of_range("Given index is out of range");
+	p_algorithm.util_start(m_graph_size_, p_start, this);
+	DFS_util(p_start, p_algorithm);
+	p_algorithm.util_end();
 }
 
 template<typename T, typename P>
@@ -182,15 +190,13 @@ inline void Graph<T, P>::BFS(size_t start, GBaseAlgorithm<T, P>& algorithm)
 		return;
 
 	//Do start work with the algorithm
-	algorithm.util_start(size(), start, m_adj_matrix_); 
+	algorithm.util_start(size(), start, this); 
 
 	//Create node queue and push starting node onto the queue
 	std::queue<size_t> node_queue({ start });
 
 	while (!node_queue.empty()) {
-		//If algorithm is finished, break from the loop
-		if(algorithm.finished())
-			break;
+		
 
 		//Pop starting node from the queue
 		size_t current_node = node_queue.front();
@@ -198,14 +204,18 @@ inline void Graph<T, P>::BFS(size_t start, GBaseAlgorithm<T, P>& algorithm)
 
 		//If node is not visited, visit the node
 		if (!algorithm.is_visited(current_node)) {
-			algorithm.until_current_node_do(make_pair(current_node, *(m_nodes_[current_node]).first));
+			algorithm.util_current_node_do(current_node, m_nodes_[current_node].m_node_value_ptr_);
 		}
+
+		//If algorithm is finished, break from the loop
+		if(algorithm.finished())
+			break;
 
 		//Decide which nodes will be visited next
 		std::vector<typename Graph<T,P>::Edge> next_nodes = algorithm.util_decide_next();
 		if (next_nodes.size())
 			for (auto&& node : next_nodes)
-				node_queue.push(node.m_node_number_);
+				node_queue.push(node.m_edge_next_);
 	}
 
 	//Do end work with the algorithm
