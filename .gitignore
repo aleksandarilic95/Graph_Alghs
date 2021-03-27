@@ -15,6 +15,7 @@
 
 Debug/
 build/
+.vscode/
 lib/
 src/CMakeFiles/
 tst/CMakeFiles/
@@ -30,6 +31,8 @@ src/Makefile
 tst/cmake_install.cmake
 tst/CMakeLists.txt
 tst/Makefile
+
+Makefile
 
 # Compiled Object files
 *.slo
