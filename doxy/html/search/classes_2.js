@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['findalg_80',['FindAlg',['../classFindAlg.html',1,'']]],
-  ['findifalg_81',['FindIfAlg',['../classFindIfAlg.html',1,'']]],
-  ['findifnotalg_82',['FindIfNotAlg',['../classFindIfNotAlg.html',1,'']]]
+  ['findalg_81',['FindAlg',['../classFindAlg.html',1,'']]],
+  ['findifalg_82',['FindIfAlg',['../classFindIfAlg.html',1,'']]],
+  ['findifnotalg_83',['FindIfNotAlg',['../classFindIfNotAlg.html',1,'']]]
 ];

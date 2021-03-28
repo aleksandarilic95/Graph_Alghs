@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['_7eedge_72',['~Edge',['../structGraph_1_1Edge.html#ab67b577f512b74e575f0f8e1ecc6a563',1,'Graph::Edge']]],
-  ['_7egbasealgorithm_73',['~GBaseAlgorithm',['../classGBaseAlgorithm.html#af73dacf617a84e24283be76a00269119',1,'GBaseAlgorithm']]],
-  ['_7egraph_74',['~Graph',['../classGraph.html#a352513aa643d9a95dd8b8748b12252c8',1,'Graph']]],
-  ['_7eiscyclicalg_75',['~IsCyclicAlg',['../classIsCyclicAlg.html#ab0a5e29ca30dec737b80cd48e5342b28',1,'IsCyclicAlg']]],
-  ['_7enode_76',['~Node',['../structGraph_1_1Node.html#ad09636b4820fe309f5cff12f0a353db2',1,'Graph::Node']]]
+  ['util_callback_68',['util_callback',['../classGBaseAlgorithm.html#a2a113d4afb176bfccf671c3fcfef76bb',1,'GBaseAlgorithm']]],
+  ['util_current_node_do_69',['util_current_node_do',['../classGBaseAlgorithm.html#a91bed540d6dae30ce013ffab2f9619ca',1,'GBaseAlgorithm']]],
+  ['util_decide_next_70',['util_decide_next',['../classGBaseAlgorithm.html#a85355b47b29526ceeb4d9c5dd346c104',1,'GBaseAlgorithm']]],
+  ['util_end_71',['util_end',['../classGBaseAlgorithm.html#a638e8fdfb8abf5d3a712339efc6a82a6',1,'GBaseAlgorithm']]],
+  ['util_start_72',['util_start',['../classGBaseAlgorithm.html#af9537dc8edccc8b9fb575bb8cc6630e9',1,'GBaseAlgorithm']]]
 ];

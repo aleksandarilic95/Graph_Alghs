@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['allofalg_77',['AllOfAlg',['../classAllOfAlg.html',1,'']]],
-  ['anyofalg_78',['AnyOfAlg',['../classAnyOfAlg.html',1,'']]]
+  ['allofalg_78',['AllOfAlg',['../classAllOfAlg.html',1,'']]],
+  ['anyofalg_79',['AnyOfAlg',['../classAnyOfAlg.html',1,'']]]
 ];

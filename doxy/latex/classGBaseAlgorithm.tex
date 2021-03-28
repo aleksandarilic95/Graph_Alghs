@@ -33,7 +33,7 @@ void \mbox{\hyperlink{classGBaseAlgorithm_a91bed540d6dae30ce013ffab2f9619ca}{uti
 \item 
 void \mbox{\hyperlink{classGBaseAlgorithm_a2a113d4afb176bfccf671c3fcfef76bb}{util\+\_\+callback}} (size\+\_\+t, T $\ast$)
 \item 
-void \mbox{\hyperlink{classGBaseAlgorithm_a08b5c6beef2c0bf9212a9cdecb6a6a38}{set\+\_\+decide\+\_\+next}} (bool tmp) noexcept
+void \mbox{\hyperlink{classGBaseAlgorithm_a1b099adb6d0870fd6d59fe55d936d13d}{set\+\_\+decide\+\_\+next}} (bool p\+\_\+tmp) noexcept
 \item 
 int \mbox{\hyperlink{classGBaseAlgorithm_a93e113ead52feb760bab026ff140950c}{get\+\_\+next}} () const noexcept
 \item 
@@ -43,9 +43,9 @@ size\+\_\+t \mbox{\hyperlink{classGBaseAlgorithm_a0db7bbfe6566fa149850329f733826
 \item 
 size\+\_\+t \mbox{\hyperlink{classGBaseAlgorithm_a71721a8834f3738d57e712f5f7caabe4}{graph\+\_\+size}} () const noexcept
 \item 
-bool \mbox{\hyperlink{classGBaseAlgorithm_a3e569571bceeb614fdf96592ba08fac6}{is\+\_\+visited}} (const size\+\_\+t idx) const
+bool \mbox{\hyperlink{classGBaseAlgorithm_a53bb852d86f0bec5661793719f18ff6d}{is\+\_\+visited}} (const size\+\_\+t p\+\_\+idx) const
 \item 
-bool \mbox{\hyperlink{classGBaseAlgorithm_ab5b2eaa3700c1baaf7956a932ab7f914}{is\+\_\+visited\+\_\+on\+\_\+stack}} (const size\+\_\+t idx) const
+bool \mbox{\hyperlink{classGBaseAlgorithm_a11e1534e723081e393bdc9a8055089a9}{is\+\_\+visited\+\_\+on\+\_\+stack}} (const size\+\_\+t p\+\_\+idx) const
 \item 
 long long \mbox{\hyperlink{classGBaseAlgorithm_aa696813c5b8b3a76b1893eccac4ac850}{algorithm\+\_\+time\+\_\+s}} () const noexcept
 \item 
@@ -70,6 +70,8 @@ void \mbox{\hyperlink{classGBaseAlgorithm_a6825f8bde9585143746bfbc071395855}{fin
 size\+\_\+t \mbox{\hyperlink{classGBaseAlgorithm_a2a3cc119477037d2e4c8d72541485dc3}{current\+\_\+node\+\_\+idx}} = 0
 \item 
 T $\ast$ \mbox{\hyperlink{classGBaseAlgorithm_abcc9d27707f0eff214dbe2ef8a6ba3a6}{current\+\_\+node\+\_\+value\+\_\+ptr}} = nullptr
+\item 
+P $\ast$ \mbox{\hyperlink{classGBaseAlgorithm_ad732206136468a69b819e5633003ab18}{last\+\_\+edge\+\_\+ptr}} = nullptr
 \end{DoxyCompactItemize}
 
 
@@ -81,7 +83,7 @@ T $\ast$ \mbox{\hyperlink{classGBaseAlgorithm_abcc9d27707f0eff214dbe2ef8a6ba3a6}
 {\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
 virtual \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::$\sim$\mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
 
-
+Virtual destructor 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classGBaseAlgorithm_a4f1b1dab6b376dd63e782baab96a2c59}\label{classGBaseAlgorithm_a4f1b1dab6b376dd63e782baab96a2c59}} 
@@ -91,6 +93,9 @@ virtual \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::
 {\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
 long long \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::algorithm\+\_\+time\+\_\+ms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
+Returns algorithm time in milliseconds \begin{DoxyReturn}{Returns}
+algorithm time in milliseconds 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classGBaseAlgorithm_ad5b14b1e560012becdc62a2f2ea78a02}\label{classGBaseAlgorithm_ad5b14b1e560012becdc62a2f2ea78a02}} 
 \index{GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}!algorithm\_time\_ns@{algorithm\_time\_ns}}
 \index{algorithm\_time\_ns@{algorithm\_time\_ns}!GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}}
@@ -98,6 +103,9 @@ long long \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+
 {\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
 long long \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::algorithm\+\_\+time\+\_\+ns (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
+Returns algorithm time in nanoseconds \begin{DoxyReturn}{Returns}
+algorithm time in nanoseconds 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classGBaseAlgorithm_aa696813c5b8b3a76b1893eccac4ac850}\label{classGBaseAlgorithm_aa696813c5b8b3a76b1893eccac4ac850}} 
 \index{GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}!algorithm\_time\_s@{algorithm\_time\_s}}
 \index{algorithm\_time\_s@{algorithm\_time\_s}!GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}}
@@ -105,6 +113,9 @@ long long \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+
 {\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
 long long \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::algorithm\+\_\+time\+\_\+s (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
+Returns algorithm time in seconds \begin{DoxyReturn}{Returns}
+algorithm time in seconds 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classGBaseAlgorithm_a71534a9698556659d8ea1438b96a898c}\label{classGBaseAlgorithm_a71534a9698556659d8ea1438b96a898c}} 
 \index{GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}!algorithm\_time\_us@{algorithm\_time\_us}}
 \index{algorithm\_time\_us@{algorithm\_time\_us}!GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}}
@@ -112,6 +123,9 @@ long long \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+
 {\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
 long long \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::algorithm\+\_\+time\+\_\+us (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
+Returns algorithm time in microseconds \begin{DoxyReturn}{Returns}
+algorithm time in microseconds 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classGBaseAlgorithm_a2fc86bf5fe72b56943fcfd3c876b6d29}\label{classGBaseAlgorithm_a2fc86bf5fe72b56943fcfd3c876b6d29}} 
 \index{GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}!callback@{callback}}
 \index{callback@{callback}!GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}}
@@ -159,13 +173,16 @@ Implemented in \mbox{\hyperlink{classAllOfAlg_a9022eca3d03369ebdd9b1cd754de4050}
 {\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
 void \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::finish\+\_\+algorithm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [noexcept]}}
 
-\mbox{\Hypertarget{classGBaseAlgorithm_a6d6d43c4c06bb2f134138ab03ecb999b}\label{classGBaseAlgorithm_a6d6d43c4c06bb2f134138ab03ecb999b}} 
+Sets algorithm to finished \mbox{\Hypertarget{classGBaseAlgorithm_a6d6d43c4c06bb2f134138ab03ecb999b}\label{classGBaseAlgorithm_a6d6d43c4c06bb2f134138ab03ecb999b}} 
 \index{GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}!finished@{finished}}
 \index{finished@{finished}!GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}}
 \doxysubsubsection{\texorpdfstring{finished()}{finished()}}
 {\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
 bool \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
+Returns if algorithm is finished \begin{DoxyReturn}{Returns}
+bool if algorithm is finished or not 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classGBaseAlgorithm_ae89d9c33e3d74d79238a66b3e045e4ce}\label{classGBaseAlgorithm_ae89d9c33e3d74d79238a66b3e045e4ce}} 
 \index{GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}!get\_neighbors@{get\_neighbors}}
 \index{get\_neighbors@{get\_neighbors}!GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}}
@@ -173,6 +190,19 @@ bool \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::fin
 {\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
 std\+::vector$<$typename \mbox{\hyperlink{classGraph}{Graph}}$<$T,P$>$\+::Edge$>$\& \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::get\+\_\+neighbors (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{p\+\_\+idx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
 
+Returns neighbors of the given node 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+idx} & -\/ Index of the node \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & if given index is out of range \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+Edge$>$ of neighbor edges 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classGBaseAlgorithm_a93e113ead52feb760bab026ff140950c}\label{classGBaseAlgorithm_a93e113ead52feb760bab026ff140950c}} 
 \index{GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}!get\_next@{get\_next}}
 \index{get\_next@{get\_next}!GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}}
@@ -187,27 +217,61 @@ int \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::get\
 {\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
 size\+\_\+t \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::graph\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
-\mbox{\Hypertarget{classGBaseAlgorithm_a3e569571bceeb614fdf96592ba08fac6}\label{classGBaseAlgorithm_a3e569571bceeb614fdf96592ba08fac6}} 
+Returns the graph size \begin{DoxyReturn}{Returns}
+graph size 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGBaseAlgorithm_a53bb852d86f0bec5661793719f18ff6d}\label{classGBaseAlgorithm_a53bb852d86f0bec5661793719f18ff6d}} 
 \index{GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}!is\_visited@{is\_visited}}
 \index{is\_visited@{is\_visited}!GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}}
 \doxysubsubsection{\texorpdfstring{is\_visited()}{is\_visited()}}
 {\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
-bool \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::is\+\_\+visited (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{idx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+bool \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::is\+\_\+visited (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{p\+\_\+idx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{classGBaseAlgorithm_ab5b2eaa3700c1baaf7956a932ab7f914}\label{classGBaseAlgorithm_ab5b2eaa3700c1baaf7956a932ab7f914}} 
+Returns if given node has been visited 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+idx} & -\/ index of the given node \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & if given index is out of range \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+if given node has been visited 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGBaseAlgorithm_a11e1534e723081e393bdc9a8055089a9}\label{classGBaseAlgorithm_a11e1534e723081e393bdc9a8055089a9}} 
 \index{GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}!is\_visited\_on\_stack@{is\_visited\_on\_stack}}
 \index{is\_visited\_on\_stack@{is\_visited\_on\_stack}!GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}}
 \doxysubsubsection{\texorpdfstring{is\_visited\_on\_stack()}{is\_visited\_on\_stack()}}
 {\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
-bool \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::is\+\_\+visited\+\_\+on\+\_\+stack (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{idx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+bool \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::is\+\_\+visited\+\_\+on\+\_\+stack (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{p\+\_\+idx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{classGBaseAlgorithm_a08b5c6beef2c0bf9212a9cdecb6a6a38}\label{classGBaseAlgorithm_a08b5c6beef2c0bf9212a9cdecb6a6a38}} 
+Returns if given node is to be visited 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+idx} & -\/ index of the given node \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & if given index is out of range \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+if given node is to be visited 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGBaseAlgorithm_a1b099adb6d0870fd6d59fe55d936d13d}\label{classGBaseAlgorithm_a1b099adb6d0870fd6d59fe55d936d13d}} 
 \index{GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}!set\_decide\_next@{set\_decide\_next}}
 \index{set\_decide\_next@{set\_decide\_next}!GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}}
 \doxysubsubsection{\texorpdfstring{set\_decide\_next()}{set\_decide\_next()}}
 {\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
-void \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::set\+\_\+decide\+\_\+next (\begin{DoxyParamCaption}\item[{bool}]{tmp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+void \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::set\+\_\+decide\+\_\+next (\begin{DoxyParamCaption}\item[{bool}]{p\+\_\+tmp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
+Sets if algorithm should decide next nodes to visit 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+tmp} & -\/ bool if algorithm should enable \mbox{\hyperlink{classGBaseAlgorithm_aff506376369c71160da4eb21b25a0b8b}{decide\+\_\+next()}} \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classGBaseAlgorithm_a392b30faf1ea2635881bbbe4e33db993}\label{classGBaseAlgorithm_a392b30faf1ea2635881bbbe4e33db993}} 
 \index{GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}!start@{start}}
 \index{start@{start}!GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}}
@@ -226,6 +290,9 @@ Implemented in \mbox{\hyperlink{classAllOfAlg_a3c9c3c40a383b26981c5e8839cfed047}
 {\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
 size\+\_\+t \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::start\+\_\+node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
+Returns index of the node from which the traversal started \begin{DoxyReturn}{Returns}
+index of the node from which the traversal started 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classGBaseAlgorithm_a2a113d4afb176bfccf671c3fcfef76bb}\label{classGBaseAlgorithm_a2a113d4afb176bfccf671c3fcfef76bb}} 
 \index{GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}!util\_callback@{util\_callback}}
 \index{util\_callback@{util\_callback}!GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}}
@@ -277,6 +344,13 @@ size\+\_\+t \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$
 \doxysubsubsection{\texorpdfstring{current\_node\_value\_ptr}{current\_node\_value\_ptr}}
 {\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
 T$\ast$ \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::current\+\_\+node\+\_\+value\+\_\+ptr = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classGBaseAlgorithm_ad732206136468a69b819e5633003ab18}\label{classGBaseAlgorithm_ad732206136468a69b819e5633003ab18}} 
+\index{GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}!last\_edge\_ptr@{last\_edge\_ptr}}
+\index{last\_edge\_ptr@{last\_edge\_ptr}!GBaseAlgorithm$<$ T, P $>$@{GBaseAlgorithm$<$ T, P $>$}}
+\doxysubsubsection{\texorpdfstring{last\_edge\_ptr}{last\_edge\_ptr}}
+{\footnotesize\ttfamily template$<$typename T , typename P $>$ \\
+P$\ast$ \mbox{\hyperlink{classGBaseAlgorithm}{GBase\+Algorithm}}$<$ T, P $>$\+::last\+\_\+edge\+\_\+ptr = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

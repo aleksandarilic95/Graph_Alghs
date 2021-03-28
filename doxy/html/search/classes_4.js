@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['iscyclicalg_85',['IsCyclicAlg',['../classIsCyclicAlg.html',1,'']]]
+  ['iscyclicalg_86',['IsCyclicAlg',['../classIsCyclicAlg.html',1,'']]]
 ];

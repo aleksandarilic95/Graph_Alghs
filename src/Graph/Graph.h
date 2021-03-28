@@ -20,7 +20,7 @@ class Graph
 
 public:
 	
-	/*Structure representing an edge in the graph*/
+	/*Structure representing a node in the graph*/
 	struct Node {
 		Node(size_t p_node_number, T p_node_value_ptr) : node_number(p_node_number), node_value_ptr(new T(p_node_value_ptr)) {}
 		constexpr Node(const Node& rhs) {
