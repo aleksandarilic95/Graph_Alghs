@@ -102,10 +102,10 @@ void DijsktrasAlgorithm::current_node_do()
 
 `void decide_next(vector<Graph<int, int>::Edge>& vec)`:
 
-Given a vector of possible next nodes, decide which nodes you want visited. Algorithm will visit first node in the vector next. If you want no nodes visited, empty the vector and return from the function. Vector is made out of structure Edge, containing number of the node that's about to be visited (`m_edge_next_`) and pointer to an edge weight (`m_edge_value_ptr_`).
+Given a vector of possible next nodes, decide which nodes you want visited. Algorithm will visit first node in the vector next. If you want no nodes visited, empty the vector and return from the function. Vector is made out of structure Edge, containing number of the node that's about to be visited (`edge_next`) and pointer to an edge weight (`edge_value_ptr`).
 
 ```cpp
-void DijsktrasAlgorithm::decide_next(vvector<Graph<int, int>::Edge>& vec)
+void DijsktrasAlgorithm::decide_next(vector<Graph<int, int>::Edge>& vec)
 {
 	return;
 }
@@ -157,6 +157,8 @@ Algorithm time: 9e-06 us
 
 `T* current_node_value_ptr;` - *Value of a current node in traversal.*
 
+`P* current_edge_value_ptr;` - *Value of last edge in traversal.*
+
 `int get_next() const noexcept` - *Returns next unvisited node in graph.*
 
 `std::vector<typename Graph<T,P>::Edge>& get_neighbors(size_t p_idx)` - *Returns a reference to neighbors of node with index p_idx.*
@@ -167,9 +169,6 @@ Algorithm time: 9e-06 us
 
 `bool is_visited(const size_t idx)` - *Returns whether a node with given index is visited.*
 
-
-
-`vector<pair<size_t, P>> current_neighbors;` - *All of the neighbors of the current node. First item is index of the neighbor, second item is the weight of the edge.*
 
 ## *Algorithm time*
 During the `void end()` function, users can call:
